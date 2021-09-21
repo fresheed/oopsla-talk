@@ -1,0 +1,78 @@
+\message{ !name(lalambda.tex)}
+\message{ !name(setup.tex) !offset(-2) }
+% Based on a script by Stefano Rosatti
+% author: Lukasz Kidzinski
+% email: lukasz.kidzinski@stanford.edu
+% Stanford University
+% August 2016
+
+% #########################################
+
+\documentclass{beamer}
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+\setbeamertemplate{navigation symbols}{}%remove navigation symbols
+
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    {\large \insertframenumber/\inserttotalframenumber}
+}
+  
+\usepackage{textpos}
+\usepackage{graphicx}
+
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures={TeX}}
+\setmainfont[HyphenChar={-},ItalicFont=PTF56F.ttf,BoldFont=PTF75F.ttf,BoldItalicFont=PTF76F.ttf]{PTF55F.ttf}
+\setsansfont[HyphenChar={-},ItalicFont=PTS56F.ttf,BoldFont=PTS75F.ttf,BoldItalicFont=PTS76F.ttf]{PTS55F.ttf}
+\setmonofont[Mapping=tex-text]{Ubuntu Mono}
+
+
+%% В XeLaTex заменой известного пакета babel является пакет polyglossia.
+%% Теперь у нас будут переносы слов
+\usepackage{csquotes}
+\usepackage{polyglossia}
+\setdefaultlanguage{russian}
+\setotherlanguage{english}
+
+\usepackage[normalem]{ulem}
+
+\newcommand{\emphnext}[1]{\only<1>{#1}\only<2>{{\color{red} #1}}}
+\newcommand{\highlight}[1]{\colorbox{red!30}{#1}}
+\newcommand{\highlightnext}[1]{\only<1>{#1}\only<2>\highlight{#1}}
+
+
+\usetheme{default}
+\author[ok.john.rus@gmail.com]{Ori Lahav, }
+\title[-----]{Гарантии прогресса в слабых моделях памяти}
+\institute{
+  \includegraphics[height=2cm]{spbu}
+  \hfill
+  \includegraphics[height=2cm]{jb}  
+}
+% \AtBeginSection[]
+% {
+%   \begin{frame}<beamer>
+%     \frametitle{Содержание}
+%     \tableofcontents[currentsection]
+%   \end{frame}
+% }
+
+\newcommand{\todo}[1]{{\color{red}\textbf{#1}}}
+\graphicspath{ {./} }
+
+\input{defs}
+
+\declaretheorem[name=Теорема.,style=default,numberwithin=section]{thm}
+\declaretheorem[name=Лемма.,style=default,numberwithin=section]{lem}
+\declaretheorem[name=Определение,style=default,sibling=thm]{mydefinition}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "lalambda"
+%%% End:
+
+\message{ !name(lalambda.tex) !offset(-78) }

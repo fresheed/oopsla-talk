@@ -1,0 +1,37 @@
+\begin{frame}{Spinlock terminates under sequential consistency}
+  \spinlockLibClientII
+  \pause
+  \begin{minipage}[c]{0.4\linewidth}
+    \begin{center}
+      \scSystem      
+    \end{center}
+  \end{minipage}
+
+  \vspace{0.5cm}
+
+  \pause
+  \begin{center}
+    \begin{traceenv}{1.5}{0.9}
+      \stepcounter{evctr}
+      % \setcounter{evctr}{0.5}
+      % \node at (\curEv-0.5, 1) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
+      % \node at (\curEv-0.5, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
+      % \node at (\curEv-0.3, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
+      % \node at (\curEv-0.5, 1) {$\writeInst{l}{0}$ \stepcounter{evctr}};
+      % \node at (\curEv-0.5, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
+      % \node at (\curEv-0.5, 0) {$\writeInst{l}{0}$ \stepcounter{evctr}};
+      \node at (\curEv, 1) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
+      \node at (\curEv, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
+      \node at (\curEv, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
+      \node at (\curEv, 1) {$\writeInst{l}{0}$ \stepcounter{evctr}};
+      \node at (\curEv, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
+      \node at (\curEv, 0) {$\writeInst{l}{0}$ \stepcounter{evctr}};
+    \end{traceenv}
+\end{center}
+
+\end{frame}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "oopsla"
+%%% End:

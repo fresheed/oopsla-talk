@@ -1,0 +1,29 @@
+\begin{frame}{Spinlock may not terminate under weak memory}
+  \spinlockLibClientII
+  \pause
+  \begin{minipage}[c]{0.4\linewidth}
+    \begin{center}
+      \tsoSystem      
+    \end{center}
+  \end{minipage}
+
+  \vspace{0.5cm}
+
+  \pause
+  \begin{traceenv}{1.5}{0.9}
+    \stepcounter{evctr}
+    \node at (\curEv-0.5, 1) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
+    \node at (\curEv-0.5, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
+    \node at (\curEv-0.3, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
+    \node at (\curEv-0.5, 1) {$\writeInst{l}{0}$ \stepcounter{evctr}};
+    \node at (\curEv-0.5, 0) {\color{red} $CAS(l, 0, 1)$ \stepcounter{evctr}};
+    \node at (\curEv-0.3, 0) {\color{red} $CAS(l, 0, 1)$ \stepcounter{evctr}};
+    \node at (\curEv-0.4, 0) {\ldots};
+  \end{traceenv}
+
+\end{frame}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "oopsla"
+%%% End:

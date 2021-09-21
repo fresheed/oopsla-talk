@@ -1,0 +1,32 @@
+\begin{frame}{Memory fairness definitions vary for different memory models}
+  \begin{itemize}
+  \item SC: none
+  \item TSO: write buffers are eventually flushed
+  \item Release-Acquire, StrongCOH: new messages are eventually read
+  \item \ldots
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Unifying the memory fairness by abstracting over memory model}
+  \spinlockClientII
+
+  \pause
+
+  \renewcommand{\hof}{2}
+  \renewcommand{\vof}{1}
+  \begin{center}
+    \begin{tikzpicture}[xscale=2, yscale=0.8]
+      \spinlockInfGraphEvents
+      \spinlockInfGraphRelations
+      \spinlockInfGraphComments
+    \end{tikzpicture}
+  \end{center}
+
+  \TODO{анимация для отношений}
+
+\end{frame}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "oopsla"
+%%% End:

@@ -1,0 +1,37 @@
+\newcommand{\myrect}[6]{ % node name, position, text, width, height, color
+\node[rectangle, draw = none, fill = #6,minimum width = #4,minimum height = #5]
+    (#1) at #2 {#3}
+}
+    
+\newcommand{\scSystem}{
+  \begin{tikzpicture}[xscale=1, yscale=1]
+    \myrect{T1}{(0, 0)}{Thread 1}{1cm}{0.5cm}{green};
+    \myrect{T2}{(3, 0)}{Thread 2}{1cm}{0.5cm}{green};
+    
+    \myrect{Mem}{(1.5, -2)}{Memory}{5cm}{0.5cm}{orange};
+    
+    \draw[mem] (T1) edge node[] { } (Mem);
+    \draw[mem] (T2) edge node[] { } (Mem);
+  \end{tikzpicture}
+}
+
+\newcommand{\tsoSystem}{
+  \begin{tikzpicture}[xscale=1, yscale=1]
+    \myrect{T1}{(0, 0)}{Thread 1}{1cm}{0.5cm}{green};
+    \myrect{T2}{(3, 0)}{Thread 2}{1cm}{0.5cm}{green};
+    \myrect{B1}{(0, -1)}{Buffer 1}{1cm}{0.5cm}{gray};
+    \myrect{B2}{(3, -1)}{Buffer 2}{1cm}{0.5cm}{gray};
+    
+    \myrect{Mem}{(1.5, -2)}{Memory}{5cm}{0.5cm}{orange};
+    
+    \draw[mem] (T1) edge node[] { } (B1);
+    \draw[mem] (T2) edge node[] { } (B2);
+    \draw[mem] (B1) edge node[] { } (Mem);
+    \draw[mem] (B2) edge node[] { } (Mem);
+  \end{tikzpicture}
+}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "oopsla"
+%%% End:
