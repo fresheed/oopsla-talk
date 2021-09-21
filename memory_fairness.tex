@@ -1,12 +1,15 @@
-\begin{frame}{We need to require both thread and \textbf{memory} fairness}
-  \twocolumnsEq{
-  % \begin{center}
-  \parbox[c]{0.5\linewidth}{\spinlockLib}
-  \parbox[c]{0.5\linewidth}{\spinlockClientII}
-  % \end{center}
-  }{
-    \pic{tso.png}{0.2}
-  }
+\begin{frame}{We need to require both thread and \underline{memory} fairness}
+  \pause
+  
+  \spinlockLibClientII
+  % \pause
+  \begin{minipage}[c]{0.4\linewidth}
+    \begin{center}
+      \tsoSystem      
+    \end{center}
+  \end{minipage}
+
+  \vspace{0.5cm}
 
   \pause
   % \renewcommand{\hof}{0.5}
@@ -17,7 +20,7 @@
     \node at (\curEv-0.4, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
     \node at (\curEv-0.7, 1) {$\writeInst{l}{0}$ \stepcounter{evctr}};
     \node at (\curEv-0.7, 0) {\color{red} $CAS(l, 0, 1)$ \stepcounter{evctr}};
-    \node at (\curEv-0.8, 1) {\color{blue} $\mathtt{prop}$ \stepcounter{evctr}};
+    \node at (\curEv-0.8, 1) {\color{blue} \underline{$\mathtt{prop}$} \stepcounter{evctr}};
     \node at (\curEv-0.7, 0) {\color{blue} $CAS(l, 0, 1)$ \stepcounter{evctr}};
     \node at (\curEv-0.7, 0) {\color{blue} $\writeInst{l}{0}$ \stepcounter{evctr}};
   \end{traceenv}
