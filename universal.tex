@@ -1,12 +1,22 @@
 \begin{frame}{The declarative memory fairness definition is universal}
-  \begin{center}
-    \begin{restatable}{thm}{main}    
-      $M_{fair\ op} = M_{decl} \cap Fair_{decl}$,
+  \begin{columns}
+    
+    \begin{column}{0.6\linewidth}
+      \begin{center}
+        \begin{restatable}{thm}{main}
+          $M_{fair\ op} = M_{decl} \cap Fair_{decl}$,
+          
+          where $M \in \{SC, TSO, RA, StrongCoh\}$.
+      \end{restatable}
+    \end{center}    
+  \end{column}
+  
+  \begin{column}{0.3\linewidth}
+    \includegraphics[width=1\linewidth]{coq.png}
+  \end{column}
+  
+\end{columns}
 
-      where $M \in \{SC, TSO, RA, StrongCoh\}$.
-    \end{restatable}
-
-  \end{center}
 \end{frame}
 
 
