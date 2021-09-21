@@ -167,10 +167,15 @@
 \newcommand{\spinlockInfGraphRF}{
       \node (W0) at (0.5 * \hof, 1 * \vof) {$\evlab{\lW}{}{l}{0}$};
       \drf{W0}{U1};
-      \drf{W1}{R21}; \drf{W1}{R22}; \drf{W1}{R23};
+      \drf{U1}{R21}; \drf{U1}{R22}; \drf{U1}{R23};
 }
-\newcommand{\spinlockInfGraphMO}{    
+\newcommand{\spinlockInfGraphMO}{
       \dmo[bend left=30]{W0}{U1}; \dmo[bend right=30]{U1}{W1};
+}
+\newcommand{\spinlockInfGraphFRComp}{
+  \draw[frComp,bend right=60] (R21) edge node[] { } (W1);
+  \draw[frComp,bend right=60] (R22) edge node[] { } (W1);
+  \draw[frComp,bend right=120] (R23) edge node[] { } (W1);
 }
 \newcommand{\spinlockInfGraphComments}{
       \node (V1) at (0.5, -4) {}; \node (V2) at (1.5, -4) {};
@@ -188,16 +193,6 @@
       \node (R22) at (2 * \hof, -2 * \vof) {$\evlab{\lR}{}{l}{1}$};
       \node (U2) at (2 * \hof, -4 * \vof) {{\color{green} $\evlab{\lU}{}{l}{0, 1}$}};
       \node (W2) at (2 * \hof, -6 * \vof) {$\evlab{\lW}{}{l}{0}$};
-}
-\newcommand{\spinlockFinGraphRelations}{
-      \dpo{U1}{W1};
-      \dpo{R21}{R22}; \dpo{R22}{U2}; \dpo{U2}{W2};
-
-      % \drf{W0}{U1};
-      % \drf{W1}{R21}; \drf{W1}{R22};
-      \drf{W1}{U2};
-
-      % \dmo[bend left=30]{W0}{U1}; \dmo[bend right=30]{U1}{W1};
 }
 
     

@@ -1,17 +1,27 @@
-\begin{frame}{Memory fairness can be expressed as prefix-finiteness of a relation}
-  \spinlockClientII
+\begin{frame}{Memory fairness corresponds to prefix-finiteness of a \only<1>{{\colorbox{white}{relation}}}\only<2->{{\colorbox{colorFR!50}{relation}}}}
+  \spinlockLibClientIIVert
+  \begin{minipage}[c]{0.6\linewidth}
+    \renewcommand{\hof}{2}
+    \renewcommand{\vof}{1}
+    \begin{center}
+      \begin{tikzpicture}[xscale=2, yscale=0.8]
+        \spinlockInfGraphEvents
+        \spinlockInfGraphPO
+        \spinlockInfGraphRF
+        \spinlockInfGraphMO
+        \pause
+        \spinlockInfGraphFRComp
+      \end{tikzpicture}
 
-  \renewcommand{\hof}{2}
-  \renewcommand{\vof}{1}
-  \begin{center}
-    \begin{tikzpicture}[xscale=2, yscale=0.8]
-      \spinlockInfGraphEvents
-      \spinlockInfGraphRelations
-    \end{tikzpicture}
-  \end{center}
+      \pause
+      TSO_{fair}: $acyclic(\overline{\lPO} \cup \lRF \cup \lMO) \land$
+      
+      ${\color{\colorTitleApprox}prefix\text{-}finite} (\lRF^{-1};\lMO) \land $ ${\color{\colorTitleApprox}prefix\text{-}finite} (\lMO)$
 
-  ${\color{\colorTitleApprox}prefix\text{-}finite} (\lRF^{-1};\lMO) \land $
-  ${\color{\colorTitleApprox}prefix\text{-}finite} (\lMO)$
+    \end{center}
+
+  \end{minipage}
+
   
 \end{frame}
 
