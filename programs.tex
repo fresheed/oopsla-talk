@@ -89,11 +89,17 @@
 }
 
 \newcommand{\spinlockLibClientII}{
-  % \begin{minipage}[pos][height][contentpos]{width} 
   \begin{minipage}[c]{0.25\linewidth}
     \spinlockLib
   \end{minipage}
   \begin{minipage}[c]{0.25\linewidth}
+    \spinlockClientII
+  \end{minipage}
+}
+\newcommand{\spinlockLibClientIIVert}{
+  \begin{minipage}[c]{0.25\linewidth}
+    \spinlockLib
+    \vspace{-0.5cm}
     \spinlockClientII
   \end{minipage}
 }
@@ -115,21 +121,6 @@
   \node (timePic) at (\curEv + 0.25, 0.5) {\includegraphics[width=0.1\textwidth]{time.png}};
   \end{tikzpicture}
 }
-\newenvironment{traceenvVert}[2]
-{
-  \setcounter{evctr}{0}
-  \begin{tikzpicture}[xscale=#1, yscale=#2]
-}
-{
-  \node (T1) at (0, -0.5 * 1) {\textbf{T1}};
-  \node (T2) at (1, -0.5 * 1) {\textbf{T2}};
-  \node (Mem) at (4.5, -0.5 * 1) {\textbf{Memory}};
-  \node (E1) at (0.5, 0) {}; \node (E2) at (0.5, -\curEv) {};
-  \node (E3) at (3.8, 0) {}; \node (E4) at (3.8, -\curEv) {};
-  \dpo{E1}{E2}; \dpo{E3}{E4};
-  \end{tikzpicture}
-}
-
 
 \newcommand{\SCDeclUnfair}{
   \begin{figure}[h]
@@ -160,23 +151,25 @@
 }
 
 
-\newcommand{\spinlockInfGraphEvents}{
-      \node (W0) at (0.5 * \hof, 1 * \vof) {$\evlab{\lW}{}{l}{0}$};
-      
+\newcommand{\spinlockInfGraphEvents}{      
       \node (U1) at (0 * \hof, -0 * \vof) {$\evlab{\lU}{}{l}{0, 1}$};
       \node (W1) at (0 * \hof, -2 * \vof) {$\evlab{\lW}{}{l}{0}$};
 
       \node (R21) at (1 * \hof, -0 * \vof) {$\evlab{\lR}{}{l}{1}$};
       \node (R22) at (1 * \hof, -2 * \vof) {$\evlab{\lR}{}{l}{1}$};
-      \node (R23) at (1 * \hof, -3 * \vof) {$\ldots$};
+      \node (R23) at (1 * \hof, -4 * \vof) {$\evlab{\lR}{}{l}{1}$};
+      \node (R24) at (1 * \hof, -5 * \vof) {$\ldots$};
 }
-\newcommand{\spinlockInfGraphRelations}{
+\newcommand{\spinlockInfGraphPO}{
       \dpo{U1}{W1};
-      \dpo{R21}{R22};
-
+      \dpo{R21}{R22}; \dpo{R22}{R23};
+}
+\newcommand{\spinlockInfGraphRF}{
+      \node (W0) at (0.5 * \hof, 1 * \vof) {$\evlab{\lW}{}{l}{0}$};
       \drf{W0}{U1};
-      \drf{W1}{R21}; \drf{W1}{R22};
-
+      \drf{W1}{R21}; \drf{W1}{R22}; \drf{W1}{R23};
+}
+\newcommand{\spinlockInfGraphMO}{    
       \dmo[bend left=30]{W0}{U1}; \dmo[bend right=30]{U1}{W1};
 }
 \newcommand{\spinlockInfGraphComments}{

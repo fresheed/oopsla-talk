@@ -1,28 +1,36 @@
-\begin{frame}{Memory fairness definitions vary for different memory models}
-  \begin{itemize}
-  \item SC: none
-  \item TSO: write buffers are eventually flushed
-  \item Release-Acquire, StrongCOH: new messages are eventually read
-  \item \ldots
-  \end{itemize}
-\end{frame}
+% \begin{frame}{Memory fairness definitions vary for different memory models}
+%   \begin{itemize}
+%   \item SC: none
+%   \item TSO: write buffers are eventually flushed
+%   \item Release-Acquire, StrongCOH: new messages are eventually read
+%   \item \ldots
+%   \end{itemize}
+% \end{frame}
 
-\begin{frame}{Unifying the memory fairness by abstracting over memory model}
-  \spinlockClientII
-
+\begin{frame}{Many memory models are defined declaratively}
+  \spinlockLibClientIIVert
   \pause
-
+  \begin{minipage}[c]{0.6\linewidth}
   \renewcommand{\hof}{2}
   \renewcommand{\vof}{1}
   \begin{center}
     \begin{tikzpicture}[xscale=2, yscale=0.8]
       \spinlockInfGraphEvents
-      \spinlockInfGraphRelations
-      \spinlockInfGraphComments
+      \pause \spinlockInfGraphPO
+      \pause \spinlockInfGraphRF
+      \pause \spinlockInfGraphMO
+      % \spinlockInfGraphRelations
+      % \spinlockInfGraphComments
     \end{tikzpicture}
+
+    \pause
+
+    SC: $acyclic(\lPO \cup \lRF \cup \lMO)$
+
+    TSO: $acyclic(\overline{\lPO} \cup \lRF \cup \lMO)$, $\overline{\lPO} \supset \lPO$
   \end{center}
 
-  \TODO{анимация для отношений}
+\end{minipage}
 
 \end{frame}
 
