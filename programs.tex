@@ -183,18 +183,24 @@
       \node at (1, -4.5) {``program order''};      
 }
 
-\newcommand{\spinlockFinGraphEvents}{
-      % \node (W0) at (0.5 * \hof, 1 * \vof) {$\evlab{\lW}{}{l}{0}$};
-      
+\newcommand{\spinlockContraGraphEvents}{
+  \node (W0) at (0.5 * \hof, 1 * \vof) {$\evlab{\lW}{}{l}{0}$};
       \node (U1) at (0 * \hof, -0 * \vof) {$\evlab{\lU}{}{l}{0, 1}$};
       \node (W1) at (0 * \hof, -2 * \vof) {$\evlab{\lW}{}{l}{0}$};
 
-      \node (R21) at (2 * \hof, -0 * \vof) {$\evlab{\lR}{}{l}{1}$};
-      \node (R22) at (2 * \hof, -2 * \vof) {$\evlab{\lR}{}{l}{1}$};
-      \node (U2) at (2 * \hof, -4 * \vof) {{\color{green} $\evlab{\lU}{}{l}{0, 1}$}};
-      \node (W2) at (2 * \hof, -6 * \vof) {$\evlab{\lW}{}{l}{0}$};
+      \node (R21) at (1 * \hof, -0 * \vof) {$\evlab{\lR}{}{l}{1}$};
+      \node (R22) at (1 * \hof, -2 * \vof) {$\evlab{\lR}{}{l}{1}$};
+      \node (R23) at (1 * \hof, -3 * \vof) {$\ldots$};
+      \node (R24) at (1 * \hof, -4 * \vof) {$\evlab{\lR}{}{l}{0}$};
+      \node (R25) at (1 * \hof, -5 * \vof) {$\ldots$};
 }
+\newcommand{\spinlockContraGraphRelations}{
+      \dpo{U1}{W1};
+      \dpo{R21}{R22}; 
 
+      \drf{U1}{R21}; \drf{U1}{R22}; \drf{W1}{R24};
+      \dmo[bend left=30]{W0}{U1}; \dmo[bend right=30]{U1}{W1};
+}
     
 
 %%% Local Variables:

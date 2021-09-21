@@ -1,13 +1,19 @@
 \begin{frame}{Memory fairness gives a practical way to prove termination}
-  % \spinlockLib
-  \spinlockClientII
+  \spinlockLibClientIIVert
+  \begin{minipage}[c]{0.6\linewidth}  
+    
+    \renewcommand{\hof}{2}
+    \renewcommand{\vof}{1}
+
+    \begin{center}
+      \begin{tikzpicture}[xscale=2, yscale=0.8]
+        \spinlockContraGraphEvents
+        \spinlockContraGraphRelations
+      \end{tikzpicture}
+    \end{center}
+
+  \end{minipage}
   
-  \begin{center}
-    \begin{tikzpicture}[xscale=2, yscale=0.8]
-      \spinlockFinGraphEvents
-      \spinlockFinGraphRelations
-    \end{tikzpicture}
-  \end{center}
   
 \end{frame}
 
