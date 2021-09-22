@@ -57,12 +57,21 @@
       % \spinlockInfGraphRelations
       % \spinlockInfGraphComments
     \end{tikzpicture}
+        
+  \end{center}
 
     \pause
-    SC: $acyclic(\lPO \cup \lRF \cup \lMO)$
+    \tikz[overlay,remember picture]{
+      % \draw[frComp,bend right=120] (7, -1) edge node[] { } (7, 5);
+      \myrectMulti{Models}{(5, 0)}{SC: $acyclic(\lPO \cup \lRF \cup \lMO)$\\ TSO: $acyclic(\overline{\lPO} \cup \lRF \cup \lMO)$, $\overline{\lPO} \supset \lPO$}{6cm}{1cm}{white};
+    }
     
-    TSO: $acyclic(\overline{\lPO} \cup \lRF \cup \lMO)$, $\overline{\lPO} \supset \lPO$
-  \end{center}
+  \pause
+    \tikz[overlay,remember picture]{
+      % \draw[frComp,bend right=120] (7, -1) edge node[] { } (7, 5);
+      \myrectMulti{Allowed}{(9, 5)}{So far it's allowed\ldots}{3.5cm}{1cm}{white};
+    }
+  
 
 \end{minipage}
 
