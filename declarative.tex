@@ -6,6 +6,41 @@
 %   \item \ldots
 %   \end{itemize}
 % \end{frame}
+\begin{frame}{We need to provide fairness for different kinds of memory models}
+  \begin{center}
+    \pause
+    {\Large Operational models}:
+    \vspace{0.25cm}
+    \pause
+    \begin{traceenv}{1.4}{0.9}
+    \stepcounter{evctr}
+    \node at (\curEv-0.5, 1) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
+    \node at (\curEv-0.7, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
+    \node at (\curEv-0.4, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
+    \node at (\curEv-0.7, 1) {$\writeInst{l}{0}$ \stepcounter{evctr}};
+    \node at (\curEv-0.7, 0) {\color{red} $CAS(l, 0, 1)$ \stepcounter{evctr}};
+    \node at (\curEv-0.8, 1) {\color{blue} \underline{$\mathtt{something \ happens}$} \stepcounter{evctr}};
+    
+    \node at (\curEv-0.7, 0) {\color{blue} $CAS(l, 0, 1)$ \stepcounter{evctr}};
+    \node at (\curEv-0.7, 0) {\color{blue} $\writeInst{l}{0}$ \stepcounter{evctr}};
+  \end{traceenv}
+
+  \onslide<4>{%
+    \tikz[overlay,remember picture]
+    \myrectMulti{Explain}{(5, 3)}{In the paper we specify that for four models}{4cm}{1cm}{white};
+  }
+  \pause
+
+  \vspace{1cm}
+  \pause
+  {\Large Declarative models:}
+  
+  \pause
+  \large{And Now for Something Completely Different} \todo{???}
+
+\end{center}
+\end{frame}
+
 
 \begin{frame}{Declarative memory models avoid explicit interleaving}
   \spinlockLibClientIIVert
