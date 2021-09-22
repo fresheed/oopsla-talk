@@ -7,7 +7,7 @@
 %   \end{itemize}
 % \end{frame}
 
-\begin{frame}{Many memory models are defined declaratively}
+\begin{frame}{Declarative memory models avoid explicit interleaving}
   \spinlockLibClientIIVert
   \pause
   \begin{minipage}[c]{0.6\linewidth}
@@ -25,6 +25,7 @@
 
     \pause
     SC: $acyclic(\lPO \cup \lRF \cup \lMO)$
+    
     TSO: $acyclic(\overline{\lPO} \cup \lRF \cup \lMO)$, $\overline{\lPO} \supset \lPO$
   \end{center}
 

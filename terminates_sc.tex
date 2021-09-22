@@ -1,4 +1,7 @@
-\begin{frame}{Spinlock terminates under sequential consistency}
+\begin{frame}{Spinlock terminates under sequential consistency \onslide<4->{[Lamport 1979], \ \ \ but now we use other semantics:}}
+  \only<1-3>{
+
+    
   \spinlockLibClientII
   \pause
   \begin{minipage}[c]{0.4\linewidth}
@@ -27,7 +30,24 @@
       \node at (\curEv, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
       \node at (\curEv, 0) {$\writeInst{l}{0}$ \stepcounter{evctr}};
     \end{traceenv}
-\end{center}
+  \end{center}
+
+  }
+
+  \only<4->{
+    \begin{itemize}
+    \item \only<4>{{\colorbox{white}{tso [Owens et al. 2009]}}}\only<5>{{\colorbox{colorFR!50}{tso [Owens et al. 2009]}}}
+    \item ra (\todo{???})
+    \item rc11 [Lahav et al. 2017]
+    \item $\ldots$
+    \end{itemize}
+  }
+  % \onslide<4>{%
+  %   \tikz[overlay,remember picture]
+  %   % \node[fill=white,text=\colorTitleApprox,draw=black]
+  %   % at ([xshift=-5cm,yshift=0cm]current page.center){But now we use:};
+  %   \myrect
+  % }
 
 \end{frame}
 
