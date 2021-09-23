@@ -1,7 +1,7 @@
-\newcommand{\mmEquiv}[1]{
-  $#1_{fair\ op} = #1_{decl} \cap Fair_{decl}$
+\newcommand{\mmEquiv}[2]{
+  $#1 = #2 \cap Fair_{decl}$
 }
-\newcommand{\tsoEquiv}{\mmEquiv{TSO}}
+\newcommand{\tsoEquiv}{\mmEquiv{\TSOopfair}{\TSOdecl}}
 
 \begin{frame}{The declarative memory fairness definition is universal}
   \pause
@@ -38,9 +38,11 @@
       % \end{restatable}      
     }
     \onslide<4->{
-      \mmEquiv{SC}\\ \mmEquiv{RA} \\ \mmEquiv{StrongCOH}
+      % \mmEquiv{SC}\\ \mmEquiv{RA} \\ \mmEquiv{StrongCOH}
+      \mmEquiv{\SCopfair}{\SCdecl} \\ \todo{others}
     }
-}  \end{center}
+  }
+\end{center}
 
 \onslide<5->{
     \tikz[overlay,remember picture]{

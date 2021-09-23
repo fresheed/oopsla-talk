@@ -15,19 +15,27 @@
   
 \end{frame}
 
-\begin{frame}{Spinlock may not terminate under other concurrency semantics}
-  \spinlockLibClientII
-  \pause
-  \begin{minipage}[c]{0.4\linewidth}
-    \begin{center}
-      \tsoSystem      
-    \end{center}
-  \end{minipage}
+% \begin{frame}{Spinlock may not terminate under weak memory models without memory fairness}
+%   \begin{frame}{Spinlock termination under TSO requires memory fairness}
+\begin{frame}{Spinlock may not terminate under TSO\onslide<4->{ without \underline{memory fairness}}}
+  \begin{columns}
+
+    \begin{column}{0.4\linewidth}
+      \spinlockClientIIExpanded
+    \end{column}
+
+    \begin{column}{0.5\linewidth}
+      \only<2->{
+        \tsoSystem
+      }
+    \end{column}
+
+  \end{columns}
 
   \vspace{0.5cm}
 
   \pause
-  \begin{traceenv}{1.5}{0.9}
+  \begin{traceenv}{1.2}{0.9}
     \stepcounter{evctr}
     \node at (\curEv-0.5, 1) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};
     \node at (\curEv-0.5, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
@@ -35,15 +43,14 @@
     \node at (\curEv-0.5, 1) {$\wlab{}{l}{0}$ \stepcounter{evctr}};
     \node at (\curEv-0.5, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
     \node at (\curEv-0.3, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
-    \node at (\curEv-0.4, 0) {\ldots};
+    \node at (\curEv-0.4, 0) {\ldots \stepcounter{evctr}};
+    \onslide<4->{
+    \node at (\curEv-0.8, 1) {\color{blue} \underline{$\mathtt{prop}$} \stepcounter{evctr}};
+    \node at (\curEv-0.7, 0) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};
+    \node at (\curEv-0.7, 0) {$\wlab{}{l}{0}$};
+    }
   \end{traceenv}
 
-  \onslide<4>{%
-    \tikz[overlay,remember picture]{
-    \node[fill=white,text=\colorTitleApprox,draw=none]
-    at ([xshift=2cm,yshift=3.4cm]current page.center){{\large(aka weak memory models)}};
-    }
-  }
   
 
 \end{frame}
