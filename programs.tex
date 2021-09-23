@@ -167,11 +167,11 @@
       \dpo{R21}{R22}; 
 
       \drf{U1}{R21}; \drf{U1}{R22};
-      \dmo[bend left=30]{W0}{U1}; 
+      \dmo[bend left=30]{W0}{U1}; \dmo[bend right=30]{U1}{W1};
 }
 \newcommand{\spinlockContraGraphRelationsII}{
-   \drf{W1}{R24};
-   \dmo[bend right=30]{U1}{W1};
+  \drf{W1}{R24};
+  \node (coqPic) at (0.75 * \hof, -4 * \vof) {{\LARGE $\exists$}};  
 }
 \newcommand{\spinlockContraGraphContra}{
   \node (Contra) at (1.2 * \hof, -4.5 * \vof) {{\color{red} \LARGE ?!}};

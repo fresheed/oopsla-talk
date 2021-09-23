@@ -1,29 +1,53 @@
-\begin{frame}{We simplify termination proofs using the declarative fairness definition}
-  \pause
-  \spinlockLibClientIIVert
-  \pause
-  \begin{minipage}[c]{0.6\linewidth}
-    \begin{restatable}{lem}{termination}
-      Under reasonable conditions$^*$, an infinite sequence of read events contains a read from $\lMO$-maximal write. \todo{better just place $\exists$ and Coq logo near the last rf}
-    \end{restatable}
-    \pause
-        
-    \renewcommand{\hof}{2}
-    \renewcommand{\vof}{1}
+% \begin{frame}{Declarative fairness definition allows to prove termination}
+\begin{frame}{}
+  \vspace{-0.5cm}
+  \begin{center}
+    \begin{tikzpicture}[xscale=2, yscale=0.8]
+      \node (Equiv) at (0, 0) {\tsoEquiv};
+      \pause
+      \node (Plog) at (-2, -1.5) {\color{gray}Program logics: future work};
+      \node (Graph) at (2, -1.5) {\underline{Graph-based reasoning}};
+      \node (Coq) at (3.5, -1.5) {\includegraphics[width=0.15\textwidth]{coq.png}};
+      \draw[thicc] (Equiv) edge node[] { } (Plog);
+      \draw[thicc] (Equiv) edge node[] { } (Graph);
+    \end{tikzpicture}
+  \end{center}
 
-    \begin{center}
-      \begin{tikzpicture}[xscale=2, yscale=0.8]
-        \spinlockContraGraphEventsI
-        \spinlockContraGraphRelationsI
-        \pause
-        \spinlockContraGraphEventsII
-        \spinlockContraGraphRelationsII
-        \pause
-        \spinlockContraGraphContra       
-      \end{tikzpicture}
-    \end{center}
+  \vspace{-1cm}
+  
+  \onslide<3->{
+  \begin{columns}
+    
+    \begin{column}{0.4\linewidth}
+      \spinlockClientIIExpanded
+    \end{column}
 
-  \end{minipage}
+    \begin{column}{0.4\linewidth}
+      \pause
+      \renewcommand{\hof}{2}
+      \renewcommand{\vof}{1}
+      
+      \begin{center}
+        \begin{tikzpicture}[xscale=2, yscale=0.8]
+          \spinlockContraGraphEventsI
+          \spinlockContraGraphRelationsI
+          \pause
+          \spinlockContraGraphEventsII
+          \spinlockContraGraphRelationsII
+          \pause
+          \spinlockContraGraphContra       
+        \end{tikzpicture}
+      \end{center}
+
+    \end{column}
+  \end{columns}
+  }
+  % \begin{minipage}[c]{0.6\linewidth}
+  %   \begin{restatable}{lem}{termination}
+  %     Under reasonable conditions$^*$, an infinite sequence of read events contains a read from $\lMO$-maximal write. \todo{better just place $\exists$ and Coq logo near the last rf}
+  %   \end{restatable}
+  %   \pause   
+  % \end{minipage}
   
   
 \end{frame}
