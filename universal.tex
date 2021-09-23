@@ -1,24 +1,52 @@
-\newcommand{\tsoEquiv}{
-  $TSO_{fair\ op} = TSO_{decl} \cap Fair_{decl}$
+\newcommand{\mmEquiv}[1]{
+  $#1_{fair\ op} = #1_{decl} \cap Fair_{decl}$
 }
+\newcommand{\tsoEquiv}{\mmEquiv{TSO}}
+
 \begin{frame}{The declarative memory fairness definition is universal}
+  \pause
+
   \begin{columns}
     
-    \begin{column}{0.6\linewidth}
+    \begin{column}{0.45\linewidth}
       \begin{center}
-        \begin{restatable}{thm}{main}
-          $M_{fair\ op} = M_{decl} \cap Fair_{decl}$,
-          
-          where $M \in \{SC, TSO, RA, StrongCoh\}$.
-      \end{restatable}
-    \end{center}    
-  \end{column}
-  
-  \begin{column}{0.3\linewidth}
-    \includegraphics[width=1\linewidth]{coq.png}
-  \end{column}
-  
-\end{columns}
+        \propSubtrace
+      \end{center}    
+    \end{column}
+
+    \begin{column}{0.05\linewidth}
+      {\LARGE $\approx$}
+    \end{column}
+    
+    \begin{column}{0.40\linewidth}
+      \begin{center}
+        ${\color{\colorTitleApprox}\underline{prefix\text{-}finite(\lFR)}}$
+        \onslide<3->{$\subset Fair_{decl}$}
+      \end{center}
+    \end{column}      
+
+  \end{columns}
+
+  \vspace{0.5cm}
+
+  \begin{center}
+{\large     
+    \onslide<3->{
+      % \begin{restatable}{thm}{main}
+      \tsoEquiv \\
+      % where $M \in \{SC, TSO, RA, StrongCoh\}$.
+      % \end{restatable}      
+    }
+    \onslide<4->{
+      \mmEquiv{SC}\\ \mmEquiv{RA} \\ \mmEquiv{StrongCOH}
+    }
+}  \end{center}
+
+\onslide<5->{
+    \tikz[overlay,remember picture]{
+      \node (Coq) at ([xshift=5cm,yshift=-1cm]current page.center){\includegraphics[width=0.3\linewidth]{coq.png}};
+  }
+  }
 
 \end{frame}
 

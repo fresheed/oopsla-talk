@@ -22,6 +22,18 @@
     \end{tabular}
   \end{figure}    
 }
+\newcommand{\spinlockClientIICS}{
+  \begin{figure}[h]
+    \centering
+    \begin{tabular}{l | l}
+      \multicolumn{2}{c}{$\writeInst{l}{0}{}$} \\
+      \hline
+      $lock(l);$ & $lock(l);$ \\
+      $\comment{critical section}$ & $\comment{critical section}$ \\
+      $unlock(l);$ & $unlock(l);$ \\
+    \end{tabular}
+  \end{figure}    
+}
 
 \newcommand{\spinlockClientIIExtSep}{
   \begin{figure}[h]

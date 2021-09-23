@@ -1,30 +1,26 @@
 % \begin{frame}{Spinlock terminates under sequential consistency \onslide<4->{[Lamport 1979], \ \ \ but now we use other semantics:}}
 \begin{frame}{Spinlock terminates under interleaving semantics}
-  \only<1-3>{
 
-    
-  \spinlockLibClientII
-  \pause
-  \begin{minipage}[c]{0.4\linewidth}
-    \begin{center}
-      \todo{animate this?}
-      \scSystem      
-    \end{center}
-  \end{minipage}
+  \begin{columns}
 
+    \begin{column}{0.4\linewidth}
+      \only<1>{\spinlockClientIICS}\pause
+      \only<2->{\spinlockClientIIExpanded}      
+    \end{column}
+
+    \begin{column}{0.5\linewidth}
+      \pause
+      \scSystem
+    \end{column}
+
+  \end{columns}
+   
   \vspace{0.5cm}
 
   \pause
   \begin{center}
     \begin{traceenv}{1.5}{0.9}
       \stepcounter{evctr}
-      % \setcounter{evctr}{0.5}
-      % \node at (\curEv-0.5, 1) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
-      % \node at (\curEv-0.5, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
-      % \node at (\curEv-0.3, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
-      % \node at (\curEv-0.5, 1) {$\writeInst{l}{0}$ \stepcounter{evctr}};
-      % \node at (\curEv-0.5, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
-      % \node at (\curEv-0.5, 0) {$\writeInst{l}{0}$ \stepcounter{evctr}};
       \node at (\curEv, 1) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
       \node at (\curEv, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
       \node at (\curEv, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
@@ -34,7 +30,7 @@
     \end{traceenv}
   \end{center}
 
-  }
+  
 
   % \only<4->{
   % }
