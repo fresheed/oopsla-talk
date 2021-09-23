@@ -36,57 +36,6 @@
     \end{tabular}
   \end{figure}    
 }
-\newcommand{\spinlockClientIIExt}{
-  \begin{figure}[h]
-    \centering
-    \begin{tabular}{p{2cm} || p{2cm}}
-      \multicolumn{2}{c}{$\writeInst{l}{0}{}; \writeInst{d}{0}{}$} \\
-      \hline
-      $lock(l);$ & $lock(l);$ \\
-      $\readInst{r}{d};$ & $\readInst{r}{d};$ \\
-      $\writeInst{d}{r + 1};$ & $\writeInst{d}{r + 1};$ \\
-      $unlock(l);$ & $unlock(l);$ \\
-    \end{tabular}
-  \end{figure}    
-}
-
-% \newcommand{\spinlockClientPC}{
-%   \begin{figure}[h]
-%     \centering
-%     \begin{tabular}{l || l}
-%       \multicolumn{2}{c}{$\writeInst{l}{0}{}; \writeInst{d}{0}{}$} \\
-%       \hline
-%       $lock(l);$ & $lock(l);$ \\
-%       $\writeInst{d}{1};$ & $\readInst{r}{d}\comment{1};$ \\
-%       $unlock(l);$ & $unlock(l);$ \\
-%     \end{tabular}
-%   \end{figure}    
-% }
-\newcommand{\messagePassing}{
-  \begin{figure}[h]
-    \centering
-    \begin{tabular}{l || l}
-      \multicolumn{2}{c}{$\writeInst{f}{0}{}; \writeInst{d}{0}{}$} \\
-      \hline
-      $\writeInst{d}{1};$ & $\kw{while} (!\ \readInst{r}{f})\ \{\};$ \\
-      $\writeInst{f}{1};$ & $\readInst{r}{d}\comment{1};$ \\
-    \end{tabular}
-  \end{figure}    
-}
-
-
-\newcommand{\spinlockClientMany}{
-  \begin{figure}[h]
-    \centering
-    \begin{tabular}{l || l || l}
-      \multicolumn{3}{c}{$\writeInst{l}{0}{}$} \\
-      \hline
-      $lock();$ & {$\ldots$} & $lock();$ \\
-      % {} & {$\ldots$} & {} \\
-      $unlock();$ & {}  & $unlock();$ \\
-    \end{tabular}
-  \end{figure}
-}
 
 \newcommand{\spinlockLibClientII}{
   \begin{minipage}[c]{0.25\linewidth}
@@ -104,6 +53,22 @@
   \end{minipage}
 }
 
+\newcommand{\spinlockClientIIExpanded}{
+  \begin{figure}[h]
+    \centering
+    \begin{tabular}{l | l}
+      \multicolumn{2}{c}{$\writeInst{l}{0}{}$} \\
+      \hline
+      % $\kw{while}\ (\neg CAS(l, 0, 1)) \{\};$ & $\kw{while}\ (\neg CAS(l, 0, 1)) \{\};$ \\
+      % $\kw{while}\ (\neg CAS(l, 0, 1))$ & $\kw{while}\ (\neg CAS(l, 0, 1))$ \\
+      % $\qquad \qquad \{\};$ & $\quad \quad \{\};$ \\
+      $\kw{repeat}\ \{\}$ & $\kw{repeat}\ \{\}$ \\
+      $\kw{until}\ CAS(l, 0, 1);$ & $\kw{until}\ CAS(l, 0, 1);$ \\
+      $\comment{critical section}$ & $\comment{critical section}$ \\
+      $\writeInst{l}{0};$ & $\writeInst{l}{0};$ \\
+    \end{tabular}
+  \end{figure}    
+}
 
 \newcounter{evctr}
 \newcommand{\curEv}{\theevctr}
