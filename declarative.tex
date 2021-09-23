@@ -6,7 +6,7 @@
 %   \item \ldots
 %   \end{itemize}
 % \end{frame}
-\begin{frame}{We need to define fairness for different kinds of memory models}
+\begin{frame}{We've defined fairness for different kinds of memory models}
   \begin{center}
     \pause
     {\Large Operational models}:
@@ -63,7 +63,10 @@
     \pause
     \tikz[overlay,remember picture]{
       % \draw[frComp,bend right=120] (7, -1) edge node[] { } (7, 5);
-      \myrectMulti{Models}{(5, 0)}{SC: $acyclic(\lPO \cup \lRF \cup \lMO)$\\ TSO: $acyclic(\overline{\lPO} \cup \lRF \cup \lMO)$, $\overline{\lPO} \supset \lPO$}{6cm}{1cm}{white};
+      \myrectMulti{Models}{(5, 0)}
+      % {SC: $acyclic(\lPO \cup \lRF \cup \lMO)$\\ TSO: $acyclic(\overline{\lPO} \cup \lRF \cup \lMO)$, $\overline{\lPO} \supset \lPO$}
+      {TSO: $acyclic(\overline{\lPO} \cup \lRF \cup \lMO)$, $\overline{\lPO} \supset \lPO$}
+      {6cm}{1cm}{white};
     }
     
   \pause

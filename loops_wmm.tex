@@ -1,3 +1,20 @@
+\begin{frame}{There are many concurrency semantics}
+  \todo{present this graphically}
+  
+  \pause
+
+  Interleaving semantics (aka sequential consistency [Lamport 1979]) was the first one, but now there are others:
+  \pause
+
+  \begin{itemize}
+  \item \only<3>{{\colorbox{white}{tso [Owens et al. 2009]}}}\only<4>{{\colorbox{colorFR!50}{tso [Owens et al. 2009]}}}
+  \item ra (\todo{???})
+  \item rc11 [Lahav et al. 2017]
+  \item $\ldots$
+  \end{itemize}
+  
+\end{frame}
+
 \begin{frame}{Spinlock may not terminate under other concurrency semantics}
   \spinlockLibClientII
   \pause
@@ -20,6 +37,14 @@
     \node at (\curEv-0.3, 0) {\color{red} $CAS(l, 0, 1)$ \stepcounter{evctr}};
     \node at (\curEv-0.4, 0) {\ldots};
   \end{traceenv}
+
+  \onslide<4>{%
+    \tikz[overlay,remember picture]{
+    \node[fill=white,text=\colorTitleApprox,draw=none]
+    at ([xshift=2cm,yshift=3.4cm]current page.center){{\large(aka weak memory models)}};
+    }
+  }
+  
 
 \end{frame}
 
