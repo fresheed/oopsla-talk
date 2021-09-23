@@ -4,20 +4,32 @@
   \begin{columns}
 
     \begin{column}{0.4\linewidth}
-      \only<1>{\spinlockClientIICS}\pause
-      \only<2->{\spinlockClientIIExpanded}      
+      \only<1-3>{
+        \spinlockClientIICS        
+        \begin{tikzpicture}[xscale=1, yscale=1]
+          \node (P1) at (0, 0) {\includegraphics[width=0.9\textwidth]{terminated.png}};
+          \onslide<2-3>{
+            \node (P2) at (0, 0) {\includegraphics[width=0.7\textwidth]{pending.png}};
+            }
+        \end{tikzpicture}
+      }
+      \only<4->{\spinlockClientIIExpanded}
     \end{column}
 
     \begin{column}{0.5\linewidth}
-      \pause
-      \scSystem
+      \only<2>{
+        Multiple existing mutual exclusion lock implementations hang if too few fences are used (Oberhauser et al. [2021])
+      }
+      \only<5->{
+        \scSystem
+      }
     \end{column}
 
   \end{columns}
    
   \vspace{0.5cm}
 
-  \pause
+  \onslide<6->{
   \begin{center}
     \begin{traceenv}{1.5}{0.9}
       \stepcounter{evctr}
@@ -29,7 +41,7 @@
       \node at (\curEv, 0) {$\wlab{}{l}{0}$ \stepcounter{evctr}};
     \end{traceenv}
   \end{center}
-
+  }
   
 
   % \only<4->{
