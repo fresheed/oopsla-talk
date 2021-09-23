@@ -1,26 +1,41 @@
-% \begin{frame}{Spinlock terminates under sequential consistency \onslide<4->{[Lamport 1979], \ \ \ but now we use other semantics:}}
-\begin{frame}{Spinlock terminates under interleaving semantics}
-
+\begin{frame}
   \begin{columns}
 
     \begin{column}{0.4\linewidth}
       \only<1-3>{
         \spinlockClientIICS        
         \begin{tikzpicture}[xscale=1, yscale=1]
-          \node (P1) at (0, 0) {\includegraphics[width=0.9\textwidth]{terminated.png}};
           \onslide<2-3>{
+            \node (P1) at (0, 0) {\includegraphics[width=0.9\textwidth]{terminated.png}};
+            }
+          \onslide<3>{
             \node (P2) at (0, 0) {\includegraphics[width=0.7\textwidth]{pending.png}};
             }
         \end{tikzpicture}
       }
-      \only<4->{\spinlockClientIIExpanded}
     \end{column}
 
     \begin{column}{0.5\linewidth}
-      \only<2>{
+      \only<3>{
         Multiple existing mutual exclusion lock implementations hang if too few fences are used (Oberhauser et al. [2021])
       }
-      \only<5->{
+    \end{column}
+
+  \end{columns}
+  
+\end{frame}
+
+% \begin{frame}{Spinlock terminates under sequential consistency \onslide<4->{[Lamport 1979], \ \ \ but now we use other semantics:}}
+\begin{frame}{Spinlock terminates under interleaving semantics}
+
+  \begin{columns}
+
+    \begin{column}{0.4\linewidth}
+      \spinlockClientIIExpanded
+    \end{column}
+
+    \begin{column}{0.5\linewidth}
+      \only<2->{
         \scSystem
       }
     \end{column}
@@ -29,7 +44,7 @@
    
   \vspace{0.5cm}
 
-  \onslide<6->{
+  \onslide<3->{
   \begin{center}
     \begin{traceenv}{1.5}{0.9}
       \stepcounter{evctr}

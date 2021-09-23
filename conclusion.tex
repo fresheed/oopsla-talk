@@ -11,8 +11,8 @@
   
 \end{frame}
 
-% \begin{frame}{Takeaway}
-\begin{frame}
+\begin{frame}{Takeaway}
+% \begin{frame}
   
   % {\large Summary:}
   % \begin{itemize}
@@ -21,27 +21,9 @@
   % \item Which is used to prove lock algorithms termination.
   % \end{itemize}
   
-  \begin{center}
-    \spinlockClientIIExpanded
-    \vspace{0.5cm}
-    terminates because
-  \end{center}
-  
   \begin{columns}
-    \begin{column}{0.4\linewidth}      
-      \scalebox{0.5}{\begin{traceenv}{1.4}{0.9}
-        \stepcounter{evctr}
-        \node at (\curEv-0.5, 1) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
-        \node at (\curEv-0.7, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
-        \node at (\curEv-0.4, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
-        \node at (\curEv-0.7, 1) {$\writeInst{l}{0}$ \stepcounter{evctr}};
-        \node at (\curEv-0.7, 0) {\color{red} $CAS(l, 0, 1)$ \stepcounter{evctr}};
-        \node at (\curEv-0.8, 1) {\color{blue} \underline{$\mathtt{something \ happens}$} \stepcounter{evctr}};
-        
-        \node at (\curEv-0.7, 0) {\color{blue} $CAS(l, 0, 1)$ \stepcounter{evctr}};
-        \node at (\curEv-0.7, 0) {\color{blue} $\writeInst{l}{0}$ \stepcounter{evctr}};
-      \end{traceenv}
-      }
+    \begin{column}{0.5\linewidth}      
+      \scalebox{0.7}{\fairTrace}
     \end{column}    
     \begin{column}{0.4\linewidth}
       \renewcommand{\hof}{2}
@@ -52,6 +34,7 @@
         \spinlockContraGraphRelationsI
         \spinlockContraGraphEventsII
         \spinlockContraGraphRelationsII
+        \spinlockContraGraphContra
       \end{tikzpicture}
       }
     \end{column}
