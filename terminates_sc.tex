@@ -21,12 +21,12 @@
   \begin{center}
     \begin{traceenv}{1.5}{0.9}
       \stepcounter{evctr}
-      \node at (\curEv, 1) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
-      \node at (\curEv, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
-      \node at (\curEv, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
-      \node at (\curEv, 1) {$\writeInst{l}{0}$ \stepcounter{evctr}};
-      \node at (\curEv, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
-      \node at (\curEv, 0) {$\writeInst{l}{0}$ \stepcounter{evctr}};
+      \node at (\curEv, 1) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};
+      \node at (\curEv, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
+      \node at (\curEv, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
+      \node at (\curEv, 1) {$\wlab{}{l}{0}$ \stepcounter{evctr}};
+      \node at (\curEv, 0) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};
+      \node at (\curEv, 0) {$\wlab{}{l}{0}$ \stepcounter{evctr}};
     \end{traceenv}
   \end{center}
 

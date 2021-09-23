@@ -1,28 +1,19 @@
-% \begin{frame}{Memory fairness definitions vary for different memory models}
-%   \begin{itemize}
-%   \item SC: none
-%   \item TSO: write buffers are eventually flushed
-%   \item Release-Acquire, StrongCOH: new messages are eventually read
-%   \item \ldots
-%   \end{itemize}
-% \end{frame}
-% \begin{frame}{We've defined fairness for different kinds of memory models}
 \begin{frame}
   \begin{center}
-    {\Large Fairness for \textit{operational} (interleaving-models:}
+    {\Large Fairness for \textit{operational} (interleaving-based) models:}
     \vspace{0.25cm}
     \pause
     \begin{traceenv}{1.4}{0.9}
     \stepcounter{evctr}
-    \node at (\curEv-0.5, 1) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
-    \node at (\curEv-0.7, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
-    \node at (\curEv-0.4, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
-    \node at (\curEv-0.7, 1) {$\writeInst{l}{0}$ \stepcounter{evctr}};
-    \node at (\curEv-0.7, 0) {\color{red} $CAS(l, 0, 1)$ \stepcounter{evctr}};
+    \node at (\curEv-0.5, 1) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};
+    \node at (\curEv-0.7, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
+    \node at (\curEv-0.4, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
+    \node at (\curEv-0.7, 1) {$\wlab{}{l}{0}$ \stepcounter{evctr}};
+    \node at (\curEv-0.7, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
     \node at (\curEv-0.8, 1) {\color{blue} \underline{$\mathtt{something \ happens}$} \stepcounter{evctr}};
     
-    \node at (\curEv-0.7, 0) {\color{blue} $CAS(l, 0, 1)$ \stepcounter{evctr}};
-    \node at (\curEv-0.7, 0) {\color{blue} $\writeInst{l}{0}$ \stepcounter{evctr}};
+    \node at (\curEv-0.7, 0) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};
+    \node at (\curEv-0.7, 0) {$\wlab{}{l}{0}$ \stepcounter{evctr}};
   \end{traceenv}
 
   \vspace{1cm}
@@ -45,15 +36,12 @@
       \pause \spinlockInfGraphPO
       \pause \spinlockInfGraphRF
       \pause \spinlockInfGraphMO
-      % \spinlockInfGraphRelations
-      % \spinlockInfGraphComments
     \end{tikzpicture}
         
   \end{center}
 
     \pause
     \tikz[overlay,remember picture]{
-      % \draw[frComp,bend right=120] (7, -1) edge node[] { } (7, 5);
       \myrectMulti{Models}{(5, 0)}
       {TSO: $acyclic(\lPO \cup \lRF \cup \lMO) \land \ldots$}
       {5cm}{1cm}{white};
@@ -61,7 +49,6 @@
     
   \pause
     \tikz[overlay,remember picture]{
-      % \draw[frComp,bend right=120] (7, -1) edge node[] { } (7, 5);
       \myrectMulti{Allowed}{(9, 5)}{So far it's allowed\ldots}{3.5cm}{1cm}{white};
     }
   
