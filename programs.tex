@@ -72,20 +72,29 @@
 
 \newcounter{evctr}
 \newcommand{\curEv}{\theevctr}
-\newenvironment{traceenv}[2]
+\newenvironment{traceenvNoThreads}[2]
 {
   \setcounter{evctr}{0}
   \begin{tikzpicture}[xscale=#1, yscale=#2]
 }
 {
-  \node (T1) at (-0.5 * 1, 1) {\textbf{Thread 1}};
-  \node (T2) at (-0.5 * 1, 0) {\textbf{Thread 2}};
   \node (E1) at (0, 0.5) {}; \node (E2) at (\curEv, 0.5) {};
   % \dpo{E1}{E2};
   \draw[time] (E1) edge node[] { } (E2);
-  \node (timePic) at (\curEv + 0.25, 0.5) {\includegraphics[width=0.1\textwidth]{time.png}};
   \end{tikzpicture}
 }
+\newenvironment{traceenv}[2]
+{
+  \begin{traceenvNoThreads}{#1}{#2}
+}
+{
+  \node (T1) at (-0.5 * 1, 1) {\textbf{Thread 1}};
+  \node (T2) at (-0.5 * 1, 0) {\textbf{Thread 2}};
+  \node (timePic) at (\curEv + 0.25, 0.5) {\includegraphics[width=0.1\textwidth]{time.png}};
+  \end{traceenvNoThreads}
+}
+
+
 
 \newcommand{\SCDeclUnfair}{
   \begin{figure}[h]
@@ -137,10 +146,18 @@
 \newcommand{\spinlockInfGraphMO}{
       \dmo[bend left=30]{W0}{U1}; \dmo[bend right=30]{U1}{W1};
 }
-\newcommand{\spinlockInfGraphFRComp}{
-  \draw[frComp,bend right=60] (R21) edge node[] { } (W1);
-  \draw[frComp,bend right=60] (R22) edge node[] { } (W1);
-  \draw[frComp,bend right=120] (R23) edge node[] { } (W1);
+% \newcommand{\spinlockInfGraphFRComp}{
+%   \draw[frComp,bend right=60] (R21) edge node[] { } (W1);
+%   \draw[frComp,bend right=60] (R22) edge node[] { } (W1);
+%   \draw[frComp,bend right=120] (R23) edge node[] { } (W1);
+% }
+\newcommand{\spinlockInfGraphRB}{
+  % \draw[fr,bend right=60] (R21) edge node[] { } (W1);
+  % \draw[fr,bend right=60] (R22) edge node[] { } (W1);
+  % \draw[fr,bend right=120] (R23) edge node[] { } (W1);
+  \dfr{R21}{W1}{bend right=20};
+  \dfr{R22}{W1}{bend right=30};
+  \dfr{R23}{W1}{};
 }
 \newcommand{\spinlockInfGraphComments}{
       \node (V1) at (0.5, -4) {}; \node (V2) at (1.5, -4) {};

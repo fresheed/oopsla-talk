@@ -1,33 +1,66 @@
-\begin{frame}{Memory fairness corresponds to prefix-finiteness of a \only<1>{{\colorbox{white}{relation}}}\only<2->{{\colorbox{colorFR!50}{relation}}}}
-  \spinlockLibClientIIVert
-  \begin{minipage}[c]{0.6\linewidth}
-    \renewcommand{\hof}{2}
-    \renewcommand{\vof}{1}
-    \begin{center}
+% \begin{frame}{Memory fairness corresponds to prefix-finiteness of a \only<1>{{\colorbox{white}{relation}}}\only<2->{{\colorbox{colorFR!50}{relation}}}}
+\begin{frame}
+
+  \renewcommand{\hof}{2}
+  \renewcommand{\vof}{1}
+  % \begin{column}{0.4\linewidth}
+  \onslide<2->{A declarative counterpart of}
+  \scalebox{0.8}{
+    \begin{traceenvNoThreads}{1.0}{0.9}
+      \stepcounter{evctr}
+      % \node (dummy) at (0, 2) {};
+      \node at (\curEv, 1) {$\ldots$ \stepcounter{evctr}};
+      \node at (\curEv, 1) {\color{blue} \underline{$\mathtt{prop}$} \stepcounter{evctr}};
+      \node at (\curEv, 0) {$CAS(l, 0, 1)$ \stepcounter{evctr}};
+      \node at (\curEv, 0) {$\ldots$ \stepcounter{evctr}};
+    \end{traceenvNoThreads}
+  }
+  \onslide<2->{is needed}
+
+  \vspace{0.5cm}
+
+  \onslide<3->{
+
+  \begin{columns}
+
+    \begin{column}{0.4\linewidth}
+      \spinlockClientIIExpanded
+
+      \vspace{0.5cm}
+      \onslide<5>{
+      $TSO_{fair}$: $acyclic(\overline{\lPO} \cup \lRF \cup \lMO) \land$    
+      ${\color{\colorTitleApprox}\underline{prefix\text{-}finite(\lFR)}}$
+      }
+    \end{column}
+
+    \begin{column}{0.5\linewidth}
+      \renewcommand{\hof}{2}
+      \renewcommand{\vof}{1}
       \begin{tikzpicture}[xscale=2, yscale=0.8]
         \spinlockInfGraphEvents
         \spinlockInfGraphPO
         \spinlockInfGraphRF
         \spinlockInfGraphMO
-        \pause
-        \spinlockInfGraphFRComp
+        % \onslide<4->{\spinlockInfGraphFRComp}
+        \onslide<4->{
+          \spinlockInfGraphRB
+          \node (R24) at (0 * \hof, -4 * \vof) {$\lFR \defeq \lRF^{-1};\lMO$};
+        }        
       \end{tikzpicture}
 
       \pause
-      $TSO_{fair}$: $acyclic(\overline{\lPO} \cup \lRF \cup \lMO) \land$
-      
-      ${\color{\colorTitleApprox}prefix\text{-}finite}$ {\colorbox{colorFR!50}{$(\lRF^{-1};\lMO)$}} $\land$ ${\color{\colorTitleApprox}prefix\text{-}finite} (\lMO)$
 
-    \end{center}
+    \end{column}
 
-  \end{minipage}
+  \end{columns}
 
-  \pause
-    \tikz[overlay,remember picture]{
-      % \draw[frComp,bend right=120] (7, -1) edge node[] { } (7, 5);
-      \myrectMulti{Allowed}{(12, 5)}{And now it's forbidden}{4cm}{1cm}{white};
-    }
   
+
+  % \tikz[overlay,remember picture]{
+  %   % \draw[frComp,bend right=120] (7, -1) edge node[] { } (7, 5);
+  %   \myrectMulti{Allowed}{(12, 5)}{And now it's forbidden}{4cm}{1cm}{white};
+  % }
+  }
 \end{frame}
 
 %%% Local Variables:
