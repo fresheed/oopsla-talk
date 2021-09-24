@@ -55,6 +55,8 @@
 %   \begin{frame}{Spinlock termination under TSO requires memory fairness}
 \begin{frame}{Spinlock may not terminate under TSO\onslide<16->{ without \underline{memory fairness}}}
 
+  \unselect
+  \newcommand{\BcolorI}{\passiveColor} \newcommand{\BcolorII}{\passiveColor}
   \only<3->{\selectI \upd{\progPosI}{I}}
   \only<4->{\upd{\progPosI}{II}}
   \only<5->{\selectII \upd{\progPosII}{I}}
@@ -68,11 +70,12 @@
   \only<13->{\upd{\progPosII}{II}}
   \only<14->{\upd{\progPosII}{I}}
   \only<15->{\upd{\progPosII}{II}}
-  % 
-  \only<17->{\upd{\progPosII}{I}}
+  \only<16->{\unselect \upd{\BcolorI}{\activeColor}}
+  \only<17->{\selectII \upd{\progPosII}{I} \upd{\BcolorI}{\passiveColor}}
   \only<18->{\upd{\progPosII}{II}}
   \only<19->{\upd{\progPosII}{IV}}
-
+  \only<20->{\unselect \upd{\BcolorII}{\activeColor}}
+  % \only<21->{\upd{\BcolorII}{\passiveColor}}
   
   \begin{columns}
 
@@ -82,7 +85,30 @@
     \end{column}
 
     \begin{column}{0.5\linewidth}
-      \tsoSystem
+      \begin{tikzpicture}[xscale=1, yscale=1]
+          \myrect{T1}{(0, 0)}{Thread 1}{1cm}{0.5cm}{\tIcolor!50};
+          \myrect{T2}{(3, 0)}{Thread 2}{1cm}{0.5cm}{\tIIcolor!50};
+
+          \myrect{B1}{(0.5, -1.5)}{{\large{\onslide<9-15>{$l \leftarrow 0$}}}}{1cm}{0.5cm}{\BcolorI!50};
+          \myrect{B2}{(3.5, -1.5)}{{\large{\onslide<19>{$l \leftarrow 0$}}}}{1cm}{0.5cm}{\BcolorII!50};
+
+          \node (T1t) at (0.5, 0) {}; \node (T2t) at (3.5, 0) {}; 
+          \node (T1b) at (0.5, -3) {}; \node (T2b) at (3.5, -3) {};
+          
+          \myrectBorder{Mem}{(1.5, -3)}{\large{$l \leftarrow \only<-3,16-17,20->{0}\only<4-15,18-19>{1}$}}{5cm}{0.5cm}{black};
+          
+          \draw[mem,transform canvas={xshift=0.3cm,yshift=0.1cm}] (T1t) edge (B1);
+          \draw[mem,transform canvas={xshift=0.3cm,yshift=0.1cm}] (B1) edge (T1b);
+          \draw[mem,transform canvas={xshift=-1.25cm,yshift=0.1cm}] (T1b) edge (T1t);
+          \draw[mem,] (B1) edge (-0.75, -1.5);
+
+          \draw[mem,transform canvas={xshift=0.3cm,yshift=0.1cm}] (T2t) edge (B2);
+          \draw[mem,transform canvas={xshift=0.3cm,yshift=0.1cm}] (B2) edge (T2b);
+          \draw[mem,transform canvas={xshift=-1.25cm,yshift=0.1cm}] (T2b) edge (T2t);
+          \draw[mem,] (B2) edge (2.25, -1.5);
+
+  \end{tikzpicture}
+
     \end{column}
 
   \end{columns}
