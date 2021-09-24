@@ -1,10 +1,28 @@
 \begin{frame}{Further work}
   \begin{columns}
     \begin{column}{0.4\linewidth}
-      {\includegraphics[width=0.8\linewidth]{modes.png}}
+      \begin{center}
+      \includegraphics[width=0.6\linewidth]{cpp11.png}
+
+      % \vspace{0.4cm}
+      Richer memory accesses
+    \end{center}
     \end{column}
     \begin{column}{0.4\linewidth}
-      {\large ARMv8, etc : \sout{$acyclic(\lPO \cup \lRF)$}}
+
+      \vspace{0.5cm}
+      
+      \begin{minipage}[c]{0.45\textwidth}
+        \includegraphics[width=1.0\linewidth]{arm.png}
+      \end{minipage}
+      \hfill
+      \begin{minipage}[c]{0.45\textwidth}
+        \includegraphics[width=1.0\linewidth]{power.png}
+      \end{minipage}
+            
+      \begin{center}
+      {\large \sout{$acyclic(\lPO \cup \lRF)$}}
+    \end{center}
     \end{column}
     
   \end{columns}
@@ -21,25 +39,41 @@
   % \item Which is used to prove lock algorithms termination.
   % \end{itemize}
   
-  \begin{columns}
-    \begin{column}{0.5\linewidth}      
-      \scalebox{0.7}{\fairTrace}
-    \end{column}    
-    \begin{column}{0.4\linewidth}
-      \renewcommand{\hof}{2}
-      \renewcommand{\vof}{1}
-      \scalebox{0.8}{
-      \begin{tikzpicture}[xscale=2, yscale=0.8]
-        \spinlockContraGraphEventsI
-        \spinlockContraGraphRelationsI
-        \spinlockContraGraphEventsII
-        \spinlockContraGraphRelationsII
-        \spinlockContraGraphContra
-      \end{tikzpicture}
-      }
-    \end{column}
-  \end{columns}
+  % \begin{columns}
+  %   \begin{column}{0.5\linewidth}      
+  %     \scalebox{0.7}{\fairTrace}
+  %   \end{column}    
+  %   \begin{column}{0.4\linewidth}
+  %     \renewcommand{\hof}{2}
+  %     \renewcommand{\vof}{1}
+  %     \scalebox{0.8}{
+  %     \begin{tikzpicture}[xscale=2, yscale=0.8]
+  %       \spinlockContraGraphEventsI
+  %       \spinlockContraGraphRelationsI
+  %       \spinlockContraGraphEventsII
+  %       \spinlockContraGraphRelationsII
+  %       \spinlockContraGraphContra
+  %     \end{tikzpicture}
+  %     }
+  %   \end{column}
+  % \end{columns}
 
+  \begin{center}
+  \scalebox{0.8}{\fairTrace}
+
+  \vspace{0.7cm}  
+  \renewcommand{\hof}{2}
+  \renewcommand{\vof}{1}
+  \scalebox{0.8}{
+    \begin{tikzpicture}[xscale=2, yscale=0.8]
+      \spinlockContraGraphEventsI
+      \spinlockContraGraphRelationsI
+      \spinlockContraGraphEventsII
+      \spinlockContraGraphRelationsII
+      \spinlockContraGraphContra
+    \end{tikzpicture}
+  }
+\end{center}
   % \todo{{\large More in the paper: ?}}
 
 \end{frame}
