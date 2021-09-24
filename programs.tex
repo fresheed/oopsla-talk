@@ -209,7 +209,21 @@
 }
  
     
+\newcommand{\propSubtrace}{
+  \begin{traceenvNoThreads}{1.0}{0.9}
+    \stepcounter{evctr}
+    % \node (dummy) at (0, 2) {};
+    \node at (\curEv, 1) {$\ldots$ \stepcounter{evctr}};
+    \node at (\curEv, 1) {\color{blue} \underline{$\mathtt{prop}$} \stepcounter{evctr}};
+    \node at (\curEv, 0) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};
+    \node at (\curEv, 0) {$\ldots$ \stepcounter{evctr}};
+  \end{traceenvNoThreads}
+}
     
+\newcommand{\mmEquiv}[2]{
+  $#1 = #2 \cap Fair_{decl}$
+}
+\newcommand{\tsoEquiv}{\mmEquiv{\TSOopfair}{\TSOdecl}}
 
 %%% Local Variables:
 %%% mode: latex
