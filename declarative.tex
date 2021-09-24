@@ -10,41 +10,50 @@
     \pause
     
     {\Large Fairness for \textit{declarative} models: \color{red}{???}}
-  
-\end{center}
+    
+  \end{center}
 \end{frame}
 
 
 \begin{frame}{Declarative memory models avoid explicit interleaving}
-  \spinlockLibClientIIVert
-  \pause
-  \begin{minipage}[c]{0.6\linewidth}
-  \renewcommand{\hof}{2}
-  \renewcommand{\vof}{1}
-  \begin{center}
-    \begin{tikzpicture}[xscale=2, yscale=0.8]
-      \spinlockInfGraphEvents
-      \pause \spinlockInfGraphPO
-      \pause \spinlockInfGraphRF
-      \pause \spinlockInfGraphMO
-    \end{tikzpicture}
+
+  \begin{columns}
+
+    \begin{column}{0.4\linewidth}
+      \spinlockClientIIExpanded
+
+      \vfill
+
+      \vspace{2cm}
+    \end{column}
+
+    \begin{column}{0.5\linewidth}
+      \pause
+      \renewcommand{\hof}{2}
+      \renewcommand{\vof}{1}
+      \begin{center}
+        \begin{tikzpicture}[xscale=2, yscale=0.8]
+          \spinlockInfGraphEvents
+          \pause \spinlockInfGraphPO
+          \pause \spinlockInfGraphRF
+          \pause \spinlockInfGraphMO
+        \end{tikzpicture}
         
+      \end{center}
+
+    \end{column}
+
+  \end{columns}
+
+  \begin{center}
+    \onslide<6->{$\TSOdecl \defeq acyclic(\lPO \cup \lRF \cup \lMO) \land \ldots$}
   \end{center}
-
-    \pause
-    \tikz[overlay,remember picture]{
-      \myrectMulti{Models}{(5, 0)}
-      {\TSOdecl: $acyclic(\lPO \cup \lRF \cup \lMO) \land \ldots$}
-      {5cm}{1cm}{white};
-    }
-    
-  \pause
-    \tikz[overlay,remember picture]{
-      \myrectMulti{Allowed}{(9, 5)}{So far it's allowed\ldots}{3.5cm}{1cm}{white};
-    }
-  
-
-\end{minipage}
+ 
+  \onslide<7->{
+  \tikz[overlay,remember picture]{
+    \node (Incomplete) at ([xshift=0cm,yshift=-2.5cm]current page.center) {\includegraphics[width=0.3\textwidth]{incomplete.png}};
+  }
+}
 
 \end{frame}
 
