@@ -17,10 +17,21 @@
 
 \begin{frame}{Declarative memory models avoid explicit interleaving}
 
+  \only<2->{\selectI \upd{\progPosI}{I}}
+  \only<3->{\upd{\progPosI}{II}}
+  \only<4->{\upd{\progPosI}{IV}}
+  \only<5->{\selectII \upd{\progPosII}{I}}
+  \only<6->{\upd{\progPosII}{II}}
+  \only<7->{\upd{\progPosII}{I}}
+  \only<8->{\upd{\progPosII}{II}}
+  \only<9->{\upd{\progPosII}{I}}
+  \only<10->{\renewcommand{\tIIcolor}{\passiveColor} \upd{\progPosII}{II}}
+
+
   \begin{columns}
 
     \begin{column}{0.4\linewidth}
-      \spinlockClientIIExpanded
+      \spinlockClientIIExpandedIter
 
       \vfill
 
@@ -33,10 +44,21 @@
       \renewcommand{\vof}{1}
       \begin{center}
         \begin{tikzpicture}[xscale=2, yscale=0.8]
-          \spinlockInfGraphEvents
-          \pause \spinlockInfGraphPO
-          \pause \spinlockInfGraphRF
-          \pause \spinlockInfGraphMO
+          % \spinlockInfGraphEvents
+          
+          \onslide<3->{\node (U1) at (0 * \hof, -0 * \vof) {$\evlab{\lU}{}{l}{0, 1}$};}
+          \onslide<4->{\node (W1) at (0 * \hof, -2 * \vof) {$\evlab{\lW}{}{l}{0}$};}
+          \onslide<6->{\node (R21) at (1 * \hof, -0 * \vof) {$\evlab{\lR}{}{l}{1}$};}
+          \onslide<8->{\node (R22) at (1 * \hof, -2 * \vof) {$\evlab{\lR}{}{l}{1}$};}
+          \onslide<10->{
+          \node (R23) at (1 * \hof, -4 * \vof) {$\evlab{\lR}{}{l}{1}$};
+          \node (R24) at (1 * \hof, -5 * \vof) {$\ldots$};          
+        }
+        
+         
+          \onslide<11->{\spinlockInfGraphPO}
+          \onslide<12->{\pause \spinlockInfGraphRF}
+          \onslide<13->{\pause \spinlockInfGraphMO}
         \end{tikzpicture}
         
       \end{center}
@@ -46,10 +68,10 @@
   \end{columns}
 
   \begin{center}
-    \onslide<6->{$\TSOdecl \defeq acyclic(\lPO \cup \lRF \cup \lMO) \land \ldots$}
+    \onslide<14->{$\TSOdecl \defeq acyclic(\lPO \cup \lRF \cup \lMO) \land \ldots$}
   \end{center}
  
-  \onslide<7->{
+  \onslide<15->{
   \tikz[overlay,remember picture]{
     \node (Incomplete) at ([xshift=0cm,yshift=-2.5cm]current page.center) {\includegraphics[width=0.3\textwidth]{incomplete.png}};
   }
