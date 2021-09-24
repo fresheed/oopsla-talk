@@ -25,6 +25,10 @@
 \newcommand{\selectII}{
   \renewcommand{\tIcolor}{\passiveColor} \renewcommand{\tIIcolor}{\activeColor}
 }
+\newcommand{\unselect}{
+  \renewcommand{\tIcolor}{\passiveColor} \renewcommand{\tIIcolor}{\passiveColor}
+}
+
 \newcommand{\upd}[2]{\renewcommand{#1}{#2}}
 \newcommand{\spinlockClientIIExpandedIter}{
 \begin{figure}[h]

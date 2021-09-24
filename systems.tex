@@ -2,11 +2,16 @@
 \node[rectangle, draw = none, fill = #6,minimum width = #4,minimum height = #5]
     (#1) at #2 {#3}
 }
+\newcommand{\myrectBorder}[6]{ % node name, position, text, width, height, color
+\node[rectangle, draw = #6, fill = none,minimum width = #4,minimum height = #5]
+    (#1) at #2 {#3}
+}
 \newcommand{\myrectMulti}[6]{ % node name, position, text, width, height, color
 \node[rectangle, draw = none, fill = #6,minimum height = #5,text width=#4,draw=blue]
     (#1) at #2 {#3}
 }
-    
+
+% \newcommand{\memPos}{O}
 \newcommand{\scSystem}{
   \begin{tikzpicture}[xscale=1, yscale=1]
     \myrect{T1}{(0, 0)}{Thread 1}{1cm}{0.5cm}{green};

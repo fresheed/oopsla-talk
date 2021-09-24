@@ -25,7 +25,7 @@
 
 % \begin{frame}{Spinlock terminates under sequential consistency \onslide<4->{[Lamport 1979], \ \ \ but now we use other semantics:}}
 \begin{frame}{Spinlock terminates under interleaving semantics}
-
+  \unselect
   \only<4->{\selectI \upd{\progPosI}{I}}
   \only<5->{\upd{\progPosI}{II}}
   \only<6->{\selectII \upd{\progPosII}{I}}
@@ -44,9 +44,21 @@
       \spinlockClientIIExpandedIter
     \end{column}
 
-    \begin{column}{0.5\linewidth}
+    \begin{column}{0.55\linewidth}
       \only<2->{
-        \scSystem
+        % \scSystem
+        \begin{tikzpicture}[xscale=1, yscale=1]
+          \myrect{T1}{(0, 0)}{Thread 1}{1cm}{0.5cm}{\tIcolor!50};
+          \myrect{T2}{(3, 0)}{Thread 2}{1cm}{0.5cm}{\tIIcolor!50};
+          \node (T1b) at (0, -2) {}; \node (T2b) at (3, -2) {}; 
+          
+          \myrectBorder{Mem}{(1.5, -2)}{\large{$l \leftarrow \only<-4,10-11,13->{0}\only<5-9,12>{1}$}}{5cm}{0.5cm}{black};
+          
+          \draw[mem,transform canvas={xshift=0.3cm,yshift=0.1cm}] (T1) edge (T1b);
+          \draw[mem,transform canvas={xshift=-0.3cm,yshift=0.1cm}] (T1b) edge (T1);
+          \draw[mem,transform canvas={xshift=0.3cm,yshift=0.1cm}] (T2) edge (T2b);
+          \draw[mem,transform canvas={xshift=-0.3cm,yshift=0.1cm}] (T2b) edge (T2);
+        \end{tikzpicture}
       }
     \end{column}
 

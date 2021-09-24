@@ -16,8 +16,17 @@
     \usebeamerfont{footline}%
     \usebeamercolor[fg]{footline}%
     \hspace{1em}%
+    \ifnum \theframenumber=1
+        % This is the title frame, do nothing
+
+    \else
+        % These would be all the following frames
+        % <<<Your template code goes here>>>
     {\large \insertframenumber/\inserttotalframenumber}
+    \fi
 }
+
+   
   
 \usepackage{textpos}
 \usepackage{graphicx}
