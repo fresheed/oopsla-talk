@@ -1,3 +1,7 @@
+\newcommand{\fakeTheoremOneline}[1]{
+  {\color{\colorTitleApprox}\large \textit{Theorem.}} #1
+}
+
 \begin{frame}{The declarative memory fairness definition is universal}
   \pause
 
@@ -15,8 +19,10 @@
     
     \begin{column}{0.40\linewidth}
       \begin{center}
+        \onslide<3->{$\fairDecl \defeq$ \\}
         ${\color{\colorTitleApprox}\underline{prefix\text{-}finite(\lFR)}}$
-        \onslide<3->{$\subset Fair_{decl}$}
+        \onslide<3->{
+        $\land\  {\color{\colorTitleApprox}\underline{prefix\text{-}finite(\lMO)}}$}
       \end{center}
     \end{column}      
 
@@ -28,13 +34,15 @@
 {\large     
     \onslide<3->{
       % \begin{restatable}{thm}{main}
-      \tsoEquiv \\
+      \fakeTheoremOneline{\tsoEquiv} \\
       % where $M \in \{SC, TSO, RA, StrongCoh\}$.
       % \end{restatable}      
     }
     \onslide<4->{
       % \mmEquiv{SC}\\ \mmEquiv{RA} \\ \mmEquiv{StrongCOH}
-      \mmEquiv{\SCopfair}{\SCdecl} \\ \todo{others}
+      \fakeTheoremOneline{\mmEquiv{\SCopfair}{\SCdecl}} \\
+      \fakeTheoremOneline{\mmEquiv{\RAopfair}{\RAdecl}} \\
+      \fakeTheoremOneline{\mmEquiv{\SCOHopfair}{\SCOHdecl}} \\
     }
   }
 \end{center}
