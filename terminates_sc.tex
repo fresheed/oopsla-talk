@@ -28,10 +28,22 @@
 % \begin{frame}{Spinlock terminates under sequential consistency \onslide<4->{[Lamport 1979], \ \ \ but now we use other semantics:}}
 \begin{frame}{Spinlock terminates under interleaving semantics}
 
+  \only<4->{\selectI \upd{\progPosI}{I}}
+  \only<5->{\upd{\progPosI}{II}}
+  \only<6->{\selectII \upd{\progPosII}{I}}
+  \only<7->{\upd{\progPosII}{II}}
+  \only<8->{\upd{\progPosII}{I}}
+  \only<9->{\upd{\progPosII}{II}}
+  \only<10->{\selectI \upd{\progPosI}{IV}}
+  \only<11->{\selectII \upd{\progPosII}{I}}
+  \only<12->{\upd{\progPosII}{II}}
+  \only<13->{\upd{\progPosII}{IV}}
+
+
   \begin{columns}
 
     \begin{column}{0.4\linewidth}
-      \spinlockClientIIExpanded
+      \spinlockClientIIExpandedIter
     \end{column}
 
     \begin{column}{0.5\linewidth}
@@ -48,12 +60,12 @@
   \begin{center}
     \begin{traceenv}{1.5}{0.9}
       \stepcounter{evctr}
-      \node at (\curEv, 1) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};
-      \node at (\curEv, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
-      \node at (\curEv, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
-      \node at (\curEv, 1) {$\wlab{}{l}{0}$ \stepcounter{evctr}};
-      \node at (\curEv, 0) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};
-      \node at (\curEv, 0) {$\wlab{}{l}{0}$ \stepcounter{evctr}};
+      \onslide<5->{\node at (\curEv, 1) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};}
+      \onslide<7->{\node at (\curEv, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};}
+      \onslide<9->{\node at (\curEv, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};}
+      \onslide<10->{\node at (\curEv, 1) {$\wlab{}{l}{0}$ \stepcounter{evctr}};}
+      \onslide<12->{\node at (\curEv, 0) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};}
+      \onslide<13->{\node at (\curEv, 0) {$\wlab{}{l}{0}$ \stepcounter{evctr}};}
     \end{traceenv}
   \end{center}
   }

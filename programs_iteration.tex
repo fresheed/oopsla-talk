@@ -1,0 +1,46 @@
+\newcommand{\printOnMatch}[3]{ % var, expected value, to print
+  % \ifthenelse{\equal{\progPos}{II}}{thing is `whatever'.}{thing is something else.}
+  % \ifthenelse{\equal{#1}{#2}}{#3}{\phantom{#3}}
+  % \ifthenelse{\equal{#1}{#2}}{#3}{\textcolor{red}{#3}}
+  \ifthenelse{\equal{#1}{#2}}{\textcolor{black}{#3}}{\textcolor{white}{#3}}
+}
+
+
+\newcommand{\printOnMatchColor}[4]{ %  % var, expected value, to print, color
+  \ifthenelse{\equal{#1}{#2}}{\textcolor{#4}{#3}}{\textcolor{white}{#3}}
+}
+
+\newcommand{\progPosI}{O} \newcommand{\progPosII}{O}
+\newcommand{\activeColor}{blue} \newcommand{\passiveColor}{gray}
+\newcommand{\tIcolor}{\activeColor} \newcommand{\tIIcolor}{\passiveColor}
+\newcommand{\ppI}[1]{%
+  \printOnMatchColor{\progPosI}{#1}{\blacktriangleright}{\tIcolor}
+}
+\newcommand{\ppII}[1]{%
+  \printOnMatchColor{\progPosII}{#1}{\blacktriangleright}{\tIIcolor}
+}
+\newcommand{\selectI}{
+  \renewcommand{\tIcolor}{\activeColor} \renewcommand{\tIIcolor}{\passiveColor}
+}
+\newcommand{\selectII}{
+  \renewcommand{\tIcolor}{\passiveColor} \renewcommand{\tIIcolor}{\activeColor}
+}
+\newcommand{\upd}[2]{\renewcommand{#1}{#2}}
+\newcommand{\spinlockClientIIExpandedIter}{
+\begin{figure}[h]
+    \centering
+    \begin{tabular}{l | l}
+      \multicolumn{2}{c}{$\writeInst{l}{0}{}$} \\
+      \hline
+      $\ppI{I} \kw{repeat}\ \{\}$ & $\ppII{I} \kw{repeat}\ \{\}$ \\
+      $\ppI{II} \kw{until}\ CAS(l, 0, 1);$ & $\ppII{II} \kw{until}\ CAS(l, 0, 1);$ \\
+      $\ppI{III} \comment{critical section}$ & $\ppII{III} \comment{critical section}$ \\
+      $\ppI{IV} \writeInst{l}{0};$ & $\ppII{IV} \writeInst{l}{0};$ \\
+    \end{tabular}
+  \end{figure}
+}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "oopsla"
+%%% End:
