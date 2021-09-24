@@ -17,17 +17,36 @@
 
 % \begin{frame}{Spinlock may not terminate under weak memory models without memory fairness}
 %   \begin{frame}{Spinlock termination under TSO requires memory fairness}
-\begin{frame}{Spinlock may not terminate under TSO\onslide<4->{ without \underline{memory fairness}}}
+\begin{frame}{Spinlock may not terminate under TSO\onslide<16->{ without \underline{memory fairness}}}
+
+  \only<3->{\selectI \upd{\progPosI}{I}}
+  \only<4->{\upd{\progPosI}{II}}
+  \only<5->{\selectII \upd{\progPosII}{I}}
+  \only<6->{\upd{\progPosII}{II}}
+  \only<7->{\upd{\progPosII}{I}}
+  \only<8->{\upd{\progPosII}{II}}
+  \only<9->{\selectI \upd{\progPosI}{IV}}
+  \only<10->{\selectII \upd{\progPosII}{I}}
+  \only<11->{\upd{\progPosII}{II}}
+  \only<12->{\upd{\progPosII}{I}}
+  \only<13->{\upd{\progPosII}{II}}
+  \only<14->{\upd{\progPosII}{I}}
+  \only<15->{\upd{\progPosII}{II}}
+  % 
+  \only<17->{\upd{\progPosII}{I}}
+  \only<18->{\upd{\progPosII}{II}}
+  \only<19->{\upd{\progPosII}{IV}}
+
+  
   \begin{columns}
 
     \begin{column}{0.4\linewidth}
-      \spinlockClientIIExpanded
+      % \spinlockClientIIExpanded
+      \spinlockClientIIExpandedIter
     \end{column}
 
     \begin{column}{0.5\linewidth}
-      \only<2->{
-        \tsoSystem
-      }
+      \tsoSystem
     \end{column}
 
   \end{columns}
@@ -37,18 +56,16 @@
   \pause
   \begin{traceenv}{1.2}{0.9}
     \stepcounter{evctr}
-    \node at (\curEv-0.5, 1) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};
-    \node at (\curEv-0.5, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
-    \node at (\curEv-0.3, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
-    \node at (\curEv-0.5, 1) {$\wlab{}{l}{0}$ \stepcounter{evctr}};
-    \node at (\curEv-0.5, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
-    \node at (\curEv-0.3, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
-    \node at (\curEv-0.4, 0) {\ldots \stepcounter{evctr}};
-    \onslide<4->{
-    \node at (\curEv-0.8, 1) {\color{blue} \underline{$\mathtt{prop}$} \stepcounter{evctr}};
-    \node at (\curEv-0.7, 0) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};
-    \node at (\curEv-0.7, 0) {$\wlab{}{l}{0}$};
-    }
+    \onslide<4->{\node at (\curEv-0.5, 1) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};}
+    \onslide<6->{\node at (\curEv-0.5, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};}
+    \onslide<8->{\node at (\curEv-0.3, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};}
+    \onslide<9->{\node at (\curEv-0.5, 1) {$\wlab{}{l}{0}$ \stepcounter{evctr}};}
+    \onslide<11->{\node at (\curEv-0.5, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};}
+    \onslide<13->{\node at (\curEv-0.4, 0) {\ldots \stepcounter{evctr}};}
+    \onslide<15->{\node at (\curEv-0.3, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};}
+    \onslide<16->{\node at (\curEv-0.8, 1) {\color{blue} \underline{$\mathtt{prop}$} \stepcounter{evctr}};}
+    \onslide<18->{\node at (\curEv-0.7, 0) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};}
+    \onslide<19->{\node at (\curEv-0.7, 0) {$\wlab{}{l}{0}$};}
   \end{traceenv}
 
   
