@@ -26,11 +26,11 @@
   \begin{figure}[h]
     \centering
     \begin{tabular}{l | l}
-      \multicolumn{2}{c}{$\writeInst{l}{0}{}$} \\
-      \hline
-      $lock(l);$ & $lock(l);$ \\
+      % \multicolumn{2}{c}{$\writeInst{l}{0}{}$} \\
+      % \hline
+      $lock();$ & $lock();$ \\
       $\comment{critical section}$ & $\comment{critical section}$ \\
-      $unlock(l);$ & $unlock(l);$ \\
+      $unlock();$ & $unlock();$ \\
     \end{tabular}
   \end{figure}    
 }
