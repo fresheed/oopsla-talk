@@ -1,17 +1,48 @@
-\begin{frame}{There are many concurrency semantics}
-  \todo{present this graphically}
+\begin{frame}{There are many modern concurrency semantics}
+  % \todo{present this graphically}
   
-  \pause
+  % \pause
 
-  Interleaving semantics (aka sequential consistency [Lamport 1979]) was the first one, but now there are others:
-  \pause
+  % Interleaving semantics (aka sequential consistency [Lamport 1979]) was the first one, but now there are others:
+  % \pause
 
-  \begin{itemize}
-  \item \only<3>{{\colorbox{white}{tso [Owens et al. 2009]}}}\only<4>{{\colorbox{colorFR!50}{tso [Owens et al. 2009]}}}
-  \item ra (\todo{???})
-  \item rc11 [Lahav et al. 2017]
-  \item $\ldots$
-  \end{itemize}
+  % \begin{itemize}
+  % \item \only<3>{{\colorbox{white}{tso [Owens et al. 2009]}}}\only<4>{{\colorbox{colorFR!50}{tso [Owens et al. 2009]}}}
+  % \item ra (\todo{???})
+  % \item rc11 [Lahav et al. 2017]
+  % \item $\ldots$
+  % \end{itemize}
+
+  \begin{tikzpicture}[xscale=1, yscale=1]
+    \node (SC) at (-1.5, 1) {Sequential consistency};
+    \node (SCdate) at (-1.5, 0) {1979};
+    \node (E1) at (-2.5, 0.5) {}; \node (E2) at (10, 0.5) {};
+
+    \onslide<2->{
+      \draw[time] (E1) edge node[] { } (E2);
+    }
+
+    \onslide<3->{
+    \node (TSO) at (5, 1) {x86-TSO};
+    \node (TSOdate) at (5, 0) {2009};
+    }
+
+    \onslide<4->{
+    \node (Promising) at (7, 1) {Promising};
+    \node (RC11) at (7, 1.5) {RC11};
+    \node (RC11date) at (7, 0) {2017};
+    }
+
+    \onslide<5->{
+    \node (WMO) at (9, 1) {WeakestMO};
+    \node (WMOdate) at (9, 0) {2019};
+    }
+
+    \onslide<6->{
+    \node (More) at (10.5, 0.5) {{\Large \ldots}};    
+    }
+  \end{tikzpicture}
+
   
 \end{frame}
 
