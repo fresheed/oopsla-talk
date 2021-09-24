@@ -9,23 +9,24 @@
   \raisebox{-0.5cm}{\scalebox{0.8}{\propSubtrace}}
   \onslide<2->{is needed}
 
-  \vspace{0.5cm}
+  \vspace{1cm}
 
   \onslide<3->{
 
-    \begin{columns}
+    \begin{columns}[T]
 
       \begin{column}{0.4\linewidth}
+        % \raisebox{1cm}{\spinlockClientIIExpanded}
         \spinlockClientIIExpanded
 
-        \vspace{0.5cm}
-        \onslide<5>{
-          $\TSOdeclfair$: $acyclic(\overline{\lPO} \cup \lRF \cup \lMO)\land \ldots \land$
-          ${\color{\colorTitleApprox}\underline{prefix\text{-}finite(\lFR)}}$
-        }
+        \vfill
+
+        % \vspace{2cm}
       \end{column}
 
       \begin{column}{0.5\linewidth}
+        \vspace{-0.5cm}
+        
         \renewcommand{\hof}{2}
         \renewcommand{\vof}{1}
         \begin{tikzpicture}[xscale=2, yscale=0.8]
@@ -46,7 +47,17 @@
 
     \end{columns}
 
-    
+    \begin{center}
+    \onslide<5->{
+      $\TSOdeclfair \defeq acyclic(\overline{\lPO} \cup \lRF \cup \lMO)\land \ldots \land {\color{\colorTitleApprox}\underline{prefix\text{-}finite(\lFR)}}$
+    }
+  \end{center}
+
+  \onslide<6->{
+  \tikz[overlay,remember picture]{
+    \node (Accepted) at ([xshift=0cm,yshift=-3.2cm]current page.center) {\includegraphics[width=0.3\textwidth]{approved.png}};
+  }
+  }
 
     % \tikz[overlay,remember picture]{
     %   % \draw[frComp,bend right=120] (7, -1) edge node[] { } (7, 5);
