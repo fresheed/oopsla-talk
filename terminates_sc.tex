@@ -36,7 +36,7 @@
 
 % \begin{frame}{Spinlock terminates under sequential consistency \onslide<4->{[Lamport 1979], \ \ \ but now we use other semantics:}}
 \begin{frame}{\onslide<2->{Spinlock terminates under interleaving semantics}}
-  \setorder{fProg,fScheme,fTimeline,
+  \setorder{fProg,fScheme,fTimeline, 
     fRepI,fCASI,
     fRepII,fCASII,fRepIIs,fCASIIs,
     fWI,fRepIIt,fCASIIt,fWII}
@@ -48,17 +48,18 @@
   % \only<{\makeatother\doMath{\animBase}\makeatletter}->{\selectI \upd{\progPosI}{I}}
   % \FPeval{\mathResult}{round((4):0)} \only<\mathResult->{\selectI \upd{\progPosI}{I}}  
   % \only<{\fpEval{4}}->{\selectI \upd{\progPosI}{I}}
-  \evalMRI{\animBase + 0} \only<\MRI->{\selectI \upd{\progPosI}{I}}
+  % \evalMRI{\animBase + 0} \only<\MRI->{\selectI \upd{\progPosI}{I}}
+  \only<\fRepI->{\selectI \upd{\progPosI}{I}}
   
-  \only<5->{\upd{\progPosI}{II}}
-  \only<6->{\selectII \upd{\progPosII}{I}}
-  \only<7->{\upd{\progPosII}{II}}
-  \only<8->{\upd{\progPosII}{I}}
-  \only<9->{\upd{\progPosII}{II}}
-  \only<10->{\selectI \upd{\progPosI}{IV}}
-  \only<11->{\selectII \upd{\progPosII}{I}}
-  \only<12->{\upd{\progPosII}{II}}
-  \only<13->{\upd{\progPosII}{IV}}
+  \only<\fCASI->{\upd{\progPosI}{II}}
+  \only<\fRepII->{\selectII \upd{\progPosII}{I}}
+  \only<\fCASII->{\upd{\progPosII}{II}}
+  \only<\fRepIIs->{\upd{\progPosII}{I}}
+  \only<\fCASIIs->{\upd{\progPosII}{II}}
+  \only<\fWI->{\selectI \upd{\progPosI}{IV}}
+  \only<\fRepIIt->{\selectII \upd{\progPosII}{I}}
+  \only<\fCASIIt->{\upd{\progPosII}{II}}
+  \only<\fWII->{\upd{\progPosII}{IV}}
 
 
   \begin{columns}
@@ -68,13 +69,13 @@
     \end{column}
 
     \begin{column}{0.4\linewidth}
-      \only<2->{
+      \only<\fScheme->{
         % \scSystem
         \begin{tikzpicture}[xscale=1, yscale=1]
           \myrect{T1}{(0, 0)}{Thread 1}{1cm}{0.5cm}{\tIcolor!50};
           \myrect{T2}{(3, 0)}{Thread 2}{1cm}{0.5cm}{\tIIcolor!50};          
           
-          \myrectBorder{Mem}{(1.5, -2)}{\large{$l \leftarrow \only<-4,10-11,13->{0}\only<5-9,12>{1}$}}{5cm}{0.5cm}{black};
+          \myrectBorder{Mem}{(1.5, -2)}{\large{$l \leftarrow \only<-\fRepI,\fWI-\fRepIIt,\fWII->{0}\only<\fCASI-\fCASIIs,\fCASIIt>{1}$}}{5cm}{0.5cm}{black};
           
           \draw[mem,transform canvas={xshift=0.3cm}] (T1.south) -- (T1.south |- Mem.north);
           \draw[mem,transform canvas={xshift=-0.3cm}] (T1.south |- Mem.north) -- (T1.south);
@@ -88,16 +89,16 @@
    
   \vspace{0.5cm}
 
-  \onslide<3->{
+  \onslide<\fTimeline->{
   \begin{center}
     \begin{traceenv}{1.5}{0.9}
       \stepcounter{evctr}
-      \onslide<5->{\node at (\curEv, 1) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};}
-      \onslide<7->{\node at (\curEv, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};}
-      \onslide<9->{\node at (\curEv, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};}
-      \onslide<10->{\node at (\curEv, 1) {$\wlab{}{l}{0}$ \stepcounter{evctr}};}
-      \onslide<12->{\node at (\curEv, 0) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};}
-      \onslide<13->{\node at (\curEv, 0) {$\wlab{}{l}{0}$ \stepcounter{evctr}};}
+      \onslide<\fCASI->{\node at (\curEv, 1) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};}
+      \onslide<\fCASII->{\node at (\curEv, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};}
+      \onslide<\fCASIIs->{\node at (\curEv, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};}
+      \onslide<\fWI->{\node at (\curEv, 1) {$\wlab{}{l}{0}$ \stepcounter{evctr}};}
+      \onslide<\fCASIIt->{\node at (\curEv, 0) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};}
+      \onslide<\fWII->{\node at (\curEv, 0) {$\wlab{}{l}{0}$ \stepcounter{evctr}};}
     \end{traceenv}
   \end{center}
   }
