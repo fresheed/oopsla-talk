@@ -49,15 +49,14 @@
         % \scSystem
         \begin{tikzpicture}[xscale=1, yscale=1]
           \myrect{T1}{(0, 0)}{Thread 1}{1cm}{0.5cm}{\tIcolor!50};
-          \myrect{T2}{(3, 0)}{Thread 2}{1cm}{0.5cm}{\tIIcolor!50};
-          \node (T1b) at (0, -2) {}; \node (T2b) at (3, -2) {}; 
+          \myrect{T2}{(3, 0)}{Thread 2}{1cm}{0.5cm}{\tIIcolor!50};          
           
           \myrectBorder{Mem}{(1.5, -2)}{\large{$l \leftarrow \only<-4,10-11,13->{0}\only<5-9,12>{1}$}}{5cm}{0.5cm}{black};
           
-          \draw[mem,transform canvas={xshift=0.3cm,yshift=0.1cm}] (T1) edge (T1b);
-          \draw[mem,transform canvas={xshift=-0.3cm,yshift=0.1cm}] (T1b) edge (T1);
-          \draw[mem,transform canvas={xshift=0.3cm,yshift=0.1cm}] (T2) edge (T2b);
-          \draw[mem,transform canvas={xshift=-0.3cm,yshift=0.1cm}] (T2b) edge (T2);
+          \draw[mem,transform canvas={xshift=0.3cm}] (T1.south) -- (T1.south |- Mem.north);
+          \draw[mem,transform canvas={xshift=-0.3cm}] (T1.south |- Mem.north) -- (T1.south);
+          \draw[mem,transform canvas={xshift=0.3cm}] (T2.south) -- (T2.south |- Mem.north);
+          \draw[mem,transform canvas={xshift=-0.3cm}] (T2.south |- Mem.north) -- (T2.south);
         \end{tikzpicture}
       }
     \end{column}
