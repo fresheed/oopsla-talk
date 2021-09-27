@@ -1,9 +1,17 @@
+\newcommand{\doMath}[1]{\FPeval{\mathResult}{round((#1):0)}\FPprint{\mathResult}}
+\newcommand{\evalMRI}[1]{\FPeval{\MRI}{round((#1):0)}} % math result 1
+\newcommand{\evalMRII}[1]{\FPeval{\MRII}{round((#1):0)}} % math result 2
+
 \begin{frame}
   \begin{columns}
 
     \begin{column}{0.4\linewidth}
+      
       \only<1-3>{
-        \spinlockClientIICS        
+        \spinlockClientIICS
+        % \only<2>{\upd{\showAbstract}{true}}
+        % \spinlockClientIIExpandedIter
+        
         \begin{tikzpicture}[xscale=1, yscale=1]
           \onslide<2-3>{
             \node (P1) at (0, 0) {\includegraphics[width=0.9\textwidth]{terminated.png}};
@@ -17,6 +25,9 @@
 
     \begin{column}{0.5\linewidth}
       \only<3>{Existing lock implementations can hang [Oberhauser et al. 2021]}
+
+      % Computed: \doMath{1 + 2}
+      % Computed: \fpeval{3 + 4}
     \end{column}
 
   \end{columns}
@@ -25,8 +36,20 @@
 
 % \begin{frame}{Spinlock terminates under sequential consistency \onslide<4->{[Lamport 1979], \ \ \ but now we use other semantics:}}
 \begin{frame}{\onslide<2->{Spinlock terminates under interleaving semantics}}
+  \setorder{fProg,fScheme,fTimeline,
+    fRepI,fCASI,
+    fRepII,fCASII,fRepIIs,fCASIIs,
+    fWI,fRepIIt,fCASIIt,fWII}
+  
   \unselect
-  \only<4->{\selectI \upd{\progPosI}{I}}
+  \newcommand{\animBase}{4}
+  % doing math inline seems to be impossibe, should precompute it
+  % \only<{\doMath{\animBase + 0}}->{\selectI \upd{\progPosI}{I}}
+  % \only<{\makeatother\doMath{\animBase}\makeatletter}->{\selectI \upd{\progPosI}{I}}
+  % \FPeval{\mathResult}{round((4):0)} \only<\mathResult->{\selectI \upd{\progPosI}{I}}  
+  % \only<{\fpEval{4}}->{\selectI \upd{\progPosI}{I}}
+  \evalMRI{\animBase + 0} \only<\MRI->{\selectI \upd{\progPosI}{I}}
+  
   \only<5->{\upd{\progPosI}{II}}
   \only<6->{\selectII \upd{\progPosII}{I}}
   \only<7->{\upd{\progPosII}{II}}
