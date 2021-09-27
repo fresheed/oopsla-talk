@@ -2,56 +2,15 @@
 \newcommand{\evalMRI}[1]{\FPeval{\MRI}{round((#1):0)}} % math result 1
 \newcommand{\evalMRII}[1]{\FPeval{\MRII}{round((#1):0)}} % math result 2
 
-\begin{frame}
-  \begin{columns}
-
-    \begin{column}{0.4\linewidth}
-      
-      \only<1-3>{
-        \spinlockClientIICS
-        % \only<2>{\upd{\showConcrete}{true}}
-        % \spinlockClientIIExpandedIter
-        
-        \begin{tikzpicture}[xscale=1, yscale=1]
-          \onslide<2-3>{
-            \node (P1) at (0, 0) {\includegraphics[width=0.9\textwidth]{terminated.png}};
-            }
-          \onslide<3>{
-            \node (P2) at (0, 0) {\includegraphics[width=0.7\textwidth]{pending.png}};
-            }
-        \end{tikzpicture}
-      }
-    \end{column}
-
-    \begin{column}{0.5\linewidth}
-      \only<3>{Existing lock implementations can hang [Oberhauser et al. 2021]}
-
-      % Computed: \doMath{1 + 2}
-      % Computed: \fpeval{3 + 4}
-    \end{column}
-
-  \end{columns}
-  
-\end{frame}
-
-\setorder{
-  fAbstract,fTerm,fHang,
-  fProg,fScheme,fTimeline, 
-  fRepI,fCASI,
-  fRepII,fCASII,fRepIIs,fCASIIs,
-  fWI,fRepIIt,fCASIIt,fWII}
-
-% \begin{frame}{Spinlock terminates under sequential consistency \onslide<4->{[Lamport 1979], \ \ \ but now we use other semantics:}}
-\begin{frame}{\onslide<\fScheme->{Spinlock terminates under interleaving semantics}}
+\begin{frame}{\onslide<5->{Spinlock terminates under interleaving semantics}}
+  \setorder{
+    fAbstract,fTerm,fHang,
+    fProg,fScheme,fTimeline, 
+    fRepI,fCASI,
+    fRepII,fCASII,fRepIIs,fCASIIs,
+    fWI,fRepIIt,fCASIIt,fWII}
   
   \unselect
-  % \newcommand{\animBase}{4}
-  % % doing math inline seems to be impossibe, should precompute it
-  % % \only<{\doMath{\animBase + 0}}->{\selectI \upd{\progPosI}{I}}
-  % % \only<{\makeatother\doMath{\animBase}\makeatletter}->{\selectI \upd{\progPosI}{I}}
-  % % \FPeval{\mathResult}{round((4):0)} \only<\mathResult->{\selectI \upd{\progPosI}{I}}  
-  % % \only<{\fpEval{4}}->{\selectI \upd{\progPosI}{I}}
-  % % \evalMRI{\animBase + 0} \only<\MRI->{\selectI \upd{\progPosI}{I}}
   \only<\fRepI->{\selectI \upd{\progPosI}{I}}  
   \only<\fCASI->{\upd{\progPosI}{II}}
   \only<\fRepII->{\selectII \upd{\progPosII}{I}}
@@ -67,23 +26,14 @@
   \begin{columns}
 
     \begin{column}{0.5\linewidth}
-      % \only<\fProg->{\upd{\showConcrete}{true}}
-      \spinlockClientIIExpandedIter
-      % \begin{tikzpicture}[xscale=1, yscale=1]
-      %   \onslide<2-3>{
-      %     \node (P1) at (0, 0) {\includegraphics[width=0.9\textwidth]{terminated.png}};
-      %   }
-      %   \onslide<3>{
-      %     \node (P2) at (0, 0) {\includegraphics[width=0.7\textwidth]{pending.png}};
-      %   }
-      % \end{tikzpicture}
+      \spinlockClientIIExpandedIterAnim
 
       \tikz[overlay,remember picture]{
         \only<\fTerm-\fHang>{
-          \node (Pic) at ([xshift=0cm,yshift=-2cm]current page.center) {\includegraphics[width=0.9\textwidth]{terminated.png}};
+          \node (Pic) at ([xshift=-2.5cm,yshift=-1cm]current page.center) {\includegraphics[width=0.9\textwidth]{terminated.png}};
         }
         \only<\fHang>{
-          \node (Pic) at ([xshift=0cm,yshift=-3.2cm]current page.center) {\includegraphics[width=0.7\textwidth]{pending.png}};
+          \node (Pic) at ([xshift=-3cm,yshift=-2cm]current page.center) {\includegraphics[width=0.7\textwidth]{pending.png}};
         }
       }
     \end{column}
@@ -125,18 +75,6 @@
   \end{center}
   }
   
-
-  % \only<4->{
-  % }
-
-  
-  % \onslide<4>{%
-  %   \tikz[overlay,remember picture]
-  %   % \node[fill=white,text=\colorTitleApprox,draw=black]
-  %   % at ([xshift=-5cm,yshift=0cm]current page.center){But now we use:};
-  %   \myrect
-  % }
-
 \end{frame}
 
 %%% Local Variables:
