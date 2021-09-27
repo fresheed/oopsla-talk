@@ -1,0 +1,90 @@
+% takes a list of lists of the form: {foo=1, bla},{gar=-} and then defines empty macros for each name
+\newcommand*{\clearNamesListofLists}[1]{%
+    \forcsvlist{    \clearNamesList}{#1}%
+}
+\newcommand*{\clearNamesList}[1]{%
+    \forcsvlist{    \clearName}{#1}%
+}
+\newcommand*{\clearName}[1]{%
+    \getItemName{#1}{cmdname}%
+    \csdef{\cmdname}{}% 
+  }
+
+
+\newcounter{mycounter}
+
+% #1 is of the form <name>[=-|n], e.g. foo=- or foo=10 or foo
+% Stores in #2 the overlay specification for <name> s.t. it can be appended to the content of <name>
+\newcommand*{\getNewOverlayContent}[2]{%
+    \getItemSpec{#1}{itemSpec}%
+    \IfStrEq{\itemSpec}{-}{%
+        \csedef{#2}{\arabic{beamerpauses}-}%
+    }{%
+        \IfStrEq{\itemSpec}{}{%
+            \csedef{#2}{\arabic{beamerpauses}}%
+        }{%
+            \IfInteger{\itemSpec}{%
+%               \mycounter=\
+                \setcounter{mycounter}{\arabic{beamerpauses}}%
+                \addtocounter{mycounter}{\itemSpec}%
+                \addtocounter{mycounter}{-1}%
+                \csedef{#2}{\arabic{beamerpauses}-\arabic{mycounter}}%
+            }{%
+                \PackageError{setorder}{Argument has illegal format}{Argument was #1}%
+            }%
+        }%
+    }%
+%   input: #1, itemspec:\itemSpec, beamervalue: \arabic{beamerpauses}, content: \csuse{#2} \\
+}
+% #1 is of the form 'foo=1' or 'foo=-' or 'foo'. 
+% #2 Is the name of the macro which should hold the result
+% This macro stores the part infront '=' (the name) in #2.
+\newcommand*{\getItemName}[2]{% 
+    \IfSubStr{#1}{=}{%
+        \StrBefore{#1}{=}[\tmp]%
+        \csdef{#2}{\tmp}%
+    }{%
+        \csdef{#2}{#1}% 
+    }%
+}
+% #1 is of the form 'foo=1' or 'foo=-' or 'foo'. 
+% #2 Is the name of the macro which should hold the result
+% This macro stores the part behind '=' (the overlay spec) in #2. The stored part is empty iff there is no '=' in #1
+\newcommand*{\getItemSpec}[2]{%
+    \StrBehind{#1}{=}[\tmp]%
+    \csdef{#2}{\tmp}%
+}
+% #2 is the name where content should be appended. 
+% It has been ensured previously that #2 is a defined macro
+% #1 is the content to append
+% Depending on whether #2 is empty or not a (,) is added 
+% before appending #1
+\newcommand*{\appendToOverlaySpecification}[2]{%
+    \IfStrEq{\csexpandonce{#2}}{}{%
+        % #1 i.e. <name> is empty
+        \cseappto{#2}{\csname#1\endcsname}%
+    }{%
+        \cseappto{#2}{,\csname#1\endcsname}%
+    }%
+}
+
+\newcommand*{\setorderItem}[1]{%
+    \getNewOverlayContent{#1}{overlaycontent}%
+    \getItemName{#1}{cmdname}%
+    \appendToOverlaySpecification{overlaycontent}{\cmdname}%
+}
+
+\newcommand*{\setorderList}[1]{%
+    \forcsvlist{\setorderItem}{#1}%
+    \stepcounter{beamerpauses}%
+}
+\newcommand*{\setorder}[1]{%    
+    \clearNamesListofLists{#1}%
+    \forcsvlist{\setorderList}{#1}%
+    %% \createBef{#1}%
+}
+  
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "oopsla"
+%%% End:
