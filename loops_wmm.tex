@@ -1,3 +1,39 @@
+\newcommand{\arrowTIBufI}{colorPO}
+\newcommand{\arrowTIIBufII}{colorPO}
+\newcommand{\arrowBufIMem}{colorPO}
+\newcommand{\arrowBufIIMem}{colorPO}
+\newcommand{\arrowMemTI}{colorPO}
+\newcommand{\arrowMemTII}{colorPO}
+\newcommand{\arrowBufITI}{colorPO}
+\newcommand{\arrowBufIITII}{colorPO}
+
+\providecommand{\unsA}{} % defined for sc, 'providecommand' for development
+\renewcommand{\unsA}{
+  \upd{\arrowTIBufI}{colorPO}
+  \upd{\arrowTIIBufII}{colorPO}
+  \upd{\arrowBufIMem}{colorPO}
+  \upd{\arrowBufIIMem}{colorPO}
+  \upd{\arrowMemTI}{colorPO}
+  \upd{\arrowMemTII}{colorPO}
+  \upd{\arrowBufITI}{colorPO}
+  \upd{\arrowBufIITII}{colorPO}
+}
+\newcommand{\selectArrowI}[1]{
+  \unsA
+  \upd{#1}{\activeColor!80}
+}
+\newcommand{\selectArrowII}[2]{
+  \unsA
+  \upd{#1}{\activeColor!80}
+  \upd{#2}{\activeColor!80}
+}
+\newcommand{\selectArrowIII}[3]{
+  \unsA
+  \upd{#1}{\activeColor!80}
+  \upd{#2}{\activeColor!80}
+  \upd{#3}{\activeColor!80}
+}
+
 \begin{frame}{There are many modern concurrency semantics}
   \vspace{2cm}
 
@@ -55,24 +91,24 @@
 
   \unselect
   \newcommand{\BcolorI}{\passiveColor} \newcommand{\BcolorII}{\passiveColor}
-  \only<3->{\selectI \upd{\progPosI}{I}}
-  \only<4->{\upd{\progPosI}{II}}
-  \only<5->{\selectII \upd{\progPosII}{I}}
-  \only<6->{\upd{\progPosII}{II}}
-  \only<7->{\upd{\progPosII}{I}}
-  \only<8->{\upd{\progPosII}{II}}
-  \only<9->{\selectI \upd{\progPosI}{IV}}
-  \only<10->{\selectII \upd{\progPosII}{I}}
-  \only<11->{\upd{\progPosII}{II}}
-  \only<12->{\upd{\progPosII}{I}}
-  \only<13->{\upd{\progPosII}{II}}
-  \only<14->{\upd{\progPosII}{I}}
-  \only<15->{\upd{\progPosII}{II}}
-  \only<16->{\unselect \upd{\BcolorI}{\activeColor}}
-  \only<17->{\selectII \upd{\progPosII}{I} \upd{\BcolorI}{\passiveColor}}
-  \only<18->{\upd{\progPosII}{II}}
-  \only<19->{\upd{\progPosII}{IV}}
-  \only<20->{\unselect \upd{\BcolorII}{\activeColor}}
+  \only<3->{\selectI \upd{\progPosI}{I} \unsA}
+  \only<4->{\upd{\progPosI}{II} \selectArrowIII{\arrowMemTI}{\arrowBufIMem}{\arrowTIBufI}}
+  \only<5->{\selectII \upd{\progPosII}{I} \unsA}
+  \only<6->{\upd{\progPosII}{II} \selectArrowII{\arrowMemTII}{\arrowBufIITII}}
+  \only<7->{\upd{\progPosII}{I} \unsA}
+  \only<8->{\upd{\progPosII}{II} \selectArrowII{\arrowMemTII}{\arrowBufIITII}}
+  \only<9->{\selectI \upd{\progPosI}{IV} \selectArrowI{\arrowTIBufI}}
+  \only<10->{\selectII \upd{\progPosII}{I} \unsA}
+  \only<11->{\upd{\progPosII}{II} \selectArrowII{\arrowMemTII}{\arrowBufIITII}}
+  \only<12->{\upd{\progPosII}{I} \unsA}
+  \only<13->{\upd{\progPosII}{II} \selectArrowII{\arrowMemTII}{\arrowBufIITII}}
+  \only<14->{\upd{\progPosII}{I} \unsA}
+  \only<15->{\upd{\progPosII}{II} \selectArrowII{\arrowMemTII}{\arrowBufIITII}}
+  \only<16->{\unselect \upd{\BcolorI}{\activeColor} \selectArrowI{\arrowBufIMem}}
+  \only<17->{\selectII \upd{\progPosII}{I} \upd{\BcolorI}{\passiveColor} \unsA}
+  \only<18->{\upd{\progPosII}{II}\selectArrowIII{\arrowMemTII}{\arrowBufIIMem}{\arrowTIIBufII}}
+  \only<19->{\upd{\progPosII}{IV} \selectArrowI{\arrowTIIBufII}}
+  \only<20->{\unselect \upd{\BcolorII}{\activeColor} \selectArrowI{\arrowBufIIMem}}
   % \only<21->{\upd{\BcolorII}{\passiveColor}}
   
   \begin{columns}
@@ -95,15 +131,15 @@
 
           \myrectBorder{Mem}{(1.5, -3)}{\large{$l \leftarrow \only<-3,16-17,20->{0}\only<4-15,18-19>{1}$}}{5cm}{0.5cm}{black};
 
-          \draw[mem] (B1.north |- T1.south) -- (B1.north);
-          \draw[mem] (B1.south) -- (B1.south |- Mem.north);
-          \draw[mem,transform canvas={xshift=\bufArrowDist}] (Mem.north -| B1.west) -- (T1.south -| B1.west);
-          \draw[mem] (B1.west) -- ($(B1.west) + (\bufArrowDist, 0)$);
+          \draw[mem,draw=\arrowTIBufI] (B1.north |- T1.south) -- (B1.north);
+          \draw[mem,draw=\arrowBufIMem] (B1.south) -- (B1.south |- Mem.north);
+          \draw[mem,transform canvas={xshift=\bufArrowDist},draw=\arrowMemTI] (Mem.north -| B1.west) -- (T1.south -| B1.west);
+          \draw[mem,draw=\arrowBufITI] (B1.west) -- ($(B1.west) + (\bufArrowDist, 0)$);
           
-          \draw[mem] (B2.north |- T2.south) -- (B2.north);
-          \draw[mem] (B2.south) -- (B2.south |- Mem.north);
-          \draw[mem,transform canvas={xshift=\bufArrowDist}] (Mem.north -| B2.west) -- (T2.south -| B2.west);
-          \draw[mem] (B2.west) -- ($(B2.west) + (\bufArrowDist, 0)$);
+          \draw[mem,draw=\arrowTIIBufII] (B2.north |- T2.south) -- (B2.north);
+          \draw[mem,draw=\arrowBufIIMem] (B2.south) -- (B2.south |- Mem.north);
+          \draw[mem,transform canvas={xshift=\bufArrowDist},draw=\arrowMemTII] (Mem.north -| B2.west) -- (T2.south -| B2.west);
+          \draw[mem,draw=\arrowBufIITII] (B2.west) -- ($(B2.west) + (\bufArrowDist, 0)$);
           
   \end{tikzpicture}
 

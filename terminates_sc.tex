@@ -2,6 +2,27 @@
 \newcommand{\evalMRI}[1]{\FPeval{\MRI}{round((#1):0)}} % math result 1
 \newcommand{\evalMRII}[1]{\FPeval{\MRII}{round((#1):0)}} % math result 2
 
+\newcommand{\arrowTIMem}{colorPO}
+\newcommand{\arrowTIIMem}{colorPO}
+\newcommand{\arrowMemTI}{colorPO}
+\newcommand{\arrowMemTII}{colorPO}
+\newcommand{\unsA}{
+  \renewcommand{\arrowTIMem}{colorPO}
+  \renewcommand{\arrowTIIMem}{colorPO}
+  \renewcommand{\arrowMemTI}{colorPO}
+  \renewcommand{\arrowMemTII}{colorPO}
+}
+\newcommand{\selectArrowI}[1]{
+  \unsA
+  \renewcommand{#1}{\activeColor!80}
+}
+\newcommand{\selectArrowII}[2]{
+  \unsA
+  \renewcommand{#1}{\activeColor!80}
+  \renewcommand{#2}{\activeColor!80}
+}
+
+
 \begin{frame}{\onslide<6->{Spinlock terminates under interleaving semantics}}
   \setorder{
     fAbstract,fTerm,fHang,fAbstracts,
@@ -11,16 +32,16 @@
     fWI,fRepIIt,fCASIIt,fWII}
   
   \unselect
-  \only<\fRepI->{\selectI \upd{\progPosI}{I}}  
-  \only<\fCASI->{\upd{\progPosI}{II}}
-  \only<\fRepII->{\selectII \upd{\progPosII}{I}}
-  \only<\fCASII->{\upd{\progPosII}{II}}
-  \only<\fRepIIs->{\upd{\progPosII}{I}}
-  \only<\fCASIIs->{\upd{\progPosII}{II}}
-  \only<\fWI->{\selectI \upd{\progPosI}{IV}}
-  \only<\fRepIIt->{\selectII \upd{\progPosII}{I}}
-  \only<\fCASIIt->{\upd{\progPosII}{II}}
-  \only<\fWII->{\upd{\progPosII}{IV}}
+  \only<\fRepI->{\selectI \upd{\progPosI}{I} \unsA}
+  \only<\fCASI->{\upd{\progPosI}{II} \selectArrowII{\arrowTIMem}{\arrowMemTI}}
+  \only<\fRepII->{\selectII \upd{\progPosII}{I} \unsA}
+  \only<\fCASII->{\upd{\progPosII}{II} \selectArrowI{\arrowMemTII}}
+  \only<\fRepIIs->{\upd{\progPosII}{I} \unsA}
+  \only<\fCASIIs->{\upd{\progPosII}{II} \selectArrowI{\arrowMemTII}}
+  \only<\fWI->{\selectI \upd{\progPosI}{IV} \selectArrowI{\arrowTIMem}}
+  \only<\fRepIIt->{\selectII \upd{\progPosII}{I} \unsA}
+  \only<\fCASIIt->{\upd{\progPosII}{II} \selectArrowII{\arrowTIIMem}{\arrowMemTII}}
+  \only<\fWII->{\upd{\progPosII}{IV} \selectArrowI{\arrowTIIMem}}
 
 
   \begin{columns}
@@ -58,10 +79,10 @@
           
           \myrectBorder{Mem}{(1.5, -2)}{\large{$l \leftarrow \only<-\fRepI,\fWI-\fRepIIt,\fWII->{0}\only<\fCASI-\fCASIIs,\fCASIIt>{1}$}}{5cm}{0.5cm}{black};
           
-          \draw[mem,transform canvas={xshift=0.3cm}] (T1.south) -- (T1.south |- Mem.north);
-          \draw[mem,transform canvas={xshift=-0.3cm}] (T1.south |- Mem.north) -- (T1.south);
-          \draw[mem,transform canvas={xshift=0.3cm}] (T2.south) -- (T2.south |- Mem.north);
-          \draw[mem,transform canvas={xshift=-0.3cm}] (T2.south |- Mem.north) -- (T2.south);
+          \draw[mem,transform canvas={xshift=0.3cm},draw=\arrowTIMem] (T1.south) -- (T1.south |- Mem.north);
+          \draw[mem,transform canvas={xshift=-0.3cm},draw=\arrowMemTI] (T1.south |- Mem.north) -- (T1.south);
+          \draw[mem,transform canvas={xshift=0.3cm},draw=\arrowTIIMem] (T2.south) -- (T2.south |- Mem.north);
+          \draw[mem,transform canvas={xshift=-0.3cm},draw=\arrowMemTII] (T2.south |- Mem.north) -- (T2.south);
         \end{tikzpicture}
       }
     \end{column}
