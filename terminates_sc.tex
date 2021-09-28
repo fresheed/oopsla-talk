@@ -35,12 +35,20 @@
         }
         \only<\fHang>{
           \node (Pic) at ([xshift=-2.5cm,yshift=-2cm]current page.center) {\includegraphics[width=0.9\textwidth]{incorrect.png}};
+          \node[] (Note1) at ([xshift=3.5cm,yshift=-1cm]current page.center) {Existing lock implementations can hang};
+          \node[] (Note2) at ([xshift=2.2cm,yshift=-1.5cm]current page.center) 
+          {[Oberhauser et al. 2021]};
         }
       }
     \end{column}
 
     \begin{column}{0.4\linewidth}
-      \only<\fHang>{Existing lock implementations can hang [Oberhauser et al. 2021]}
+      % \only<\fHang>{
+      %   % \vspace{1cm}
+        
+      %   Existing lock implementations can hang        
+      %   [Oberhauser et al. 2021]
+      % }
 
       \only<\fScheme->{
         % \scSystem
