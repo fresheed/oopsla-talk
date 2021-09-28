@@ -31,9 +31,10 @@
       \tikz[overlay,remember picture]{
         \only<\fTerm-\fHang>{
           \node (Pic) at ([xshift=-2.5cm,yshift=-1cm]current page.center) {\includegraphics[width=0.9\textwidth]{terminated.png}};
+          % \node (Pic) at ([xshift=-2.5cm,yshift=-1cm]current page.center) {\includegraphics[width=0.9\textwidth]{mystamp.png}};
         }
         \only<\fHang>{
-          \node (Pic) at ([xshift=-3cm,yshift=-2cm]current page.center) {\includegraphics[width=0.7\textwidth]{pending.png}};
+          \node (Pic) at ([xshift=-2.5cm,yshift=-2cm]current page.center) {\includegraphics[width=0.9\textwidth]{incorrect.png}};
         }
       }
     \end{column}
