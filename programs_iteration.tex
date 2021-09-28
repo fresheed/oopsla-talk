@@ -35,18 +35,18 @@
 
 \newcommand{\upd}[2]{\renewcommand{#1}{#2}}
 \newcommand{\showConcrete}{false}
-\newcommand{\repeatCell}[1]{\only<4->{$#1 \kw{repeat}\ \{\}$}}
-\newcommand{\untilCell}[1]{\only<1-3>{$#1 lock();$}\only<4->{$#1 \kw{until}\ CAS(l, 0, 1);$}}
-\newcommand{\writeCell}[1]{\only<1-3>{$#1 unlock();$}\only<4->{$#1 \writeInst{l}{0};$}}
+\newcommand{\repeatCell}[1]{\only<5->{$#1 \kw{repeat}\ \{\}$}}
+\newcommand{\untilCell}[1]{\only<1-4>{$#1 lock();$}\only<5->{$#1 \kw{until}\ CAS(l, 0, 1);$}}
+\newcommand{\writeCell}[1]{\only<1-4>{$#1 unlock();$}\only<5->{$#1 \writeInst{l}{0};$}}
 \newcommand{\sbc}{white}
 % see b648b5d commit for various attempts to animate
 \newcommand{\spinlockClientIIExpandedIterAnim}{
-  \only<4->{\upd{\sbc}{black}}
+  \only<5->{\upd{\sbc}{black}}
 \begin{figure}[h]
   \centering
   
   \begin{tabular}{p{3cm} | p{3cm}}
-    \multicolumn{2}{c}{\onslide<4->{$\writeInst{l}{0}{}$}} \\
+    \multicolumn{2}{c}{\onslide<5->{$\writeInst{l}{0}{}$}} \\
       \noalign{{\color{\sbc}\hrule height 0.5pt}}
 
     \multicolumn{1}{l}{\repeatCell{\ppI{I}}} & \multicolumn{1}{!{\textcolor{\sbc}{\hspace{-0.015cm}\vrule}}l}{\repeatCell{\ppII{I}}} \\
