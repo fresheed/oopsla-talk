@@ -205,7 +205,7 @@
   \node (coqPic) at (0.75 * \hof, -4 * \vof) {{\LARGE $\exists$}};  
 }
 \newcommand{\spinlockContraGraphContra}{
-  \node (Contra) at (1.2 * \hof, -4.5 * \vof) {{\color{red} \LARGE ?!}};
+  \node (Contra) at (1.2 * \hof, -4.5 * \vof) {{\color{red} \LARGE \textbf{?!}}};
 }
  
     
@@ -232,7 +232,12 @@
     \node at (\curEv-0.7, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
     \node at (\curEv-0.4, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
     \node at (\curEv-0.7, 1) {$\wlab{}{l}{0}$ \stepcounter{evctr}};
-    \node at (\curEv-0.7, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
+
+    % \node at (\curEv-0.7, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
+    \node at (\curEv-0.5, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
+    \node at (\curEv-0.9, 0) {\ldots};
+    \node at (\curEv-0.3, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
+
     \node at (\curEv-0.8, 1) {\color{blue} \underline{$\mathtt{prop}$} \stepcounter{evctr}};    
     \node at (\curEv-0.7, 0) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};
     \node at (\curEv-0.7, 0) {$\wlab{}{l}{0}$};
