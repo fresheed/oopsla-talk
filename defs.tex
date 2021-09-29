@@ -444,8 +444,11 @@
 
 \newcommand{\dpo}[2]{\draw[po] (#1) edge (#2);}
 \newcommand{\dpoText}[2]{\draw[po] (#1) edge[right] node {$\lPO$} (#2);}
-\newcommand{\dfr}[3]{\draw[fr] (#1) edge[#3] node {$\lFR$} (#2);}
-\newcommand{\drf}[3][]{\draw[rf, #1] (#2) edge node[right] {$\lRF$} (#3);}
+% \newcommand{\dfr}[3]{\draw[fr] (#1) edge[#3] node {$\lFR$} (#2);}
+\newcommandx{\dfr}[5][3={},4={},5={}]{\draw[fr,#3] (#1) edge[#5] node[#4] {$\lFR$} (#2);}
+% \newcommand{\drf}[3][]{\draw[rf, #1] (#2) edge node[right] {$\lRF$} (#3);}
+\newcommandx{\drf}[4][3={},4={}]{\draw[rf, #3] (#1) edge node[right,#4] {$\lRF$} (#2);}
+
 % \newcommand{\dmo}[2]{\draw[mo] (#1) edge node {$\lMO$} (#2);}
 \newcommand{\dmoext}[3]{\draw[mo, #3] (#1) edge node {$\lMO$} (#2);}
 \newcommandx{\dmo}[4][1=, 2=right]{\draw[mo, #1] (#3) edge node[#2] {$\lMO$} (#4);}

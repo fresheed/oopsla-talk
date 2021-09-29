@@ -156,8 +156,8 @@
 }
 \newcommand{\spinlockInfGraphRF}{
       \node (W0) at (0.5 * \hof, 1 * \vof) {$\evlab{\lW}{}{l}{0}$};
-      \drf{W0}{U1};
-      \drf{U1}{R21}; \drf{U1}{R22}; \drf{U1}{R23};
+      \drf{W0}{U1}[][xshift=-0.5cm,yshift=0.2cm];
+      \drf{U1}{R21}[][yshift=0.2cm]; \drf{U1}{R22}[][yshift=0.1cm]; \drf{U1}{R23};
 }
 \newcommand{\spinlockInfGraphMO}{
       \dmo[bend left=30]{W0}{U1}; \dmo[bend right=30]{U1}{W1};
@@ -171,9 +171,9 @@
   % \draw[fr,bend right=60] (R21) edge node[] { } (W1);
   % \draw[fr,bend right=60] (R22) edge node[] { } (W1);
   % \draw[fr,bend right=120] (R23) edge node[] { } (W1);
-  \dfr{R21}{W1}{bend right=20};
-  \dfr{R22}{W1}{bend right=30};
-  \dfr{R23}{W1}{};
+  \dfr{R21}{W1}[][yshift=0.2cm][bend right=20];
+  \dfr{R22}{W1}[][yshift=0.2cm][bend right=30];
+  \dfr{R23}{W1}[][yshift=-0.15cm][];
 }
 \newcommand{\spinlockInfGraphComments}{
       \node (V1) at (0.5, -4) {}; \node (V2) at (1.5, -4) {};
@@ -199,13 +199,13 @@
       \dpo{U1}{W1};
       \dpo{R21}{R22}; 
 
-      \drf{U1}{R21}; \drf{U1}{R22};
+      \drf{U1}{R21}[][yshift=0.2cm]; \drf{U1}{R22}[][xshift=0.3cm];
       \dmo[bend left=30]{W0}{U1}; \dmo[bend right=30]{U1}{W1};
 
-      \dfr{R21}{W1}{}; \dfr{R22}{W1}{};
+      \dfr{R21}{W1}[][yshift=0.3cm,xshift=0.1cm]; \dfr{R22}{W1}[][yshift=-0.2cm];
 }
 \newcommand{\spinlockContraGraphRelationsII}{
-  \drf{W1}{R24};
+  \drf{W1}{R24}[][xshift=0.1cm];
   \node (coqPic) at (0.75 * \hof, -4 * \vof) {{\LARGE $\exists$}};  
 }
 \newcommand{\spinlockContraGraphContra}{
