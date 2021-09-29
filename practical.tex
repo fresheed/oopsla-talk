@@ -2,15 +2,18 @@
 \begin{frame}{}
   \vspace{-0.5cm}
   \begin{center}
+    
     \begin{tikzpicture}[xscale=2, yscale=0.8]
       \node (Equiv) at (0, 0) {\tsoEquiv};
+      \node (implArrowCenter) at (-0.4, -1) {};
       \pause
-      \node (Note) at (0, -1.5) {Proving program termination with graph-based reasoning};
+      \node (Note) at (-0.5, -1.5) {Proving program termination with graph-based reasoning};
       \node (Plog) at (-1.5, -1.3) {}; \node (Graph) at (1.5, -1.3) {};
-      \node (Coq) at (3, -0.75) {\includegraphics[width=0.2\textwidth]{coq.png}};
+      \node (Coq) at (2.2, -0.75) {\includegraphics[width=0.2\textwidth]{coq.png}};
       \node (Dummy) at (-3, -1.5) {};
-      \draw[mem] (Equiv) edge node[] { } (Plog);
-      \draw[mem] (Equiv) edge node[] { } (Graph);
+      % \draw[mem] (Equiv) edge node[] { } (Plog);
+      % \draw[mem] (Equiv) edge node[] { } (Graph);
+      % \draw[mem] (Equiv.south -| implArrowCenter.center) -- (Note.north -| implArrowCenter.center);
     \end{tikzpicture}
   \end{center}
 
