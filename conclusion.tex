@@ -1,32 +1,54 @@
 \begin{frame}{Further work}
-  \begin{columns}
-    \begin{column}{0.4\linewidth}
-      \begin{center}
-      \includegraphics[width=0.6\linewidth]{cpp11.png}
+  % \begin{columns}
+  %   \begin{column}{0.4\linewidth}
+  %     \begin{center}
+  %       % \includegraphics[width=0.6\linewidth]{cpp11.png}
+  %       \includegraphics[width=0.6\linewidth]{cpp.jpg}
 
-      % \vspace{0.4cm}
-      Richer memory accesses
-    \end{center}
-    \end{column}
-    \begin{column}{0.4\linewidth}
+  %     % \vspace{0.4cm}
+  %     More memory access types
+  %   \end{center}
+  %   \end{column}
+  %   \begin{column}{0.4\linewidth}
 
-      \vspace{0.5cm}
+  %     \vspace{0.5cm}
       
-      \begin{minipage}[c]{0.45\textwidth}
-        \includegraphics[width=1.0\linewidth]{arm.png}
-      \end{minipage}
-      \hfill
-      \begin{minipage}[c]{0.45\textwidth}
-        \includegraphics[width=1.0\linewidth]{power.png}
-      \end{minipage}
+  %     \begin{minipage}[c]{0.45\textwidth}
+  %       \includegraphics[width=1.0\linewidth]{arm.png}
+  %     \end{minipage}
+  %     \hfill
+  %     \begin{minipage}[c]{0.45\textwidth}
+  %       \includegraphics[width=1.0\linewidth]{power.png}
+  %     \end{minipage}
             
-      \begin{center}
-      {\large \sout{$acyclic(\lPO \cup \lRF)$}}
-    \end{center}
-    \end{column}
+  %     \begin{center}
+  %     {\large \sout{$acyclic(\lPO \cup \lRF)$}}
+  %   \end{center}
+  %   \end{column}
     
-  \end{columns}
-  
+  % \end{columns}
+
+  \begin{center}
+    \hfill
+    \includegraphics[width=0.15\linewidth]{cpp.png} \hfill
+    \includegraphics[width=0.3\linewidth]{arm.png} \hfill
+    \raisebox{0.5cm}{\includegraphics[width=0.3\linewidth]{power.png}} \hfill
+  \end{center}
+
+  \vspace{0.5cm}
+  \renewcommand{\ULthickness}{0.75pt}
+  \begin{center}
+    {\large More memory access types,\ \   \sout{$acyclic(\lPO \cup \lRF)$}}
+\end{center}
+
+  %   \begin{center}
+  %   \begin{minipage}{0.5\linewidth}
+  %   \begin{itemize}
+  %   \item More memory access types
+  %   \item {\large \sout{$acyclic(\lPO \cup \lRF)$}}
+  %   \end{itemize}
+  %   \end{minipage}
+  % \end{center}
 \end{frame}
 
 \begin{frame}{Takeaway}
@@ -38,6 +60,8 @@
   % \item And provide an equivalent uniform declarative definition
   % \item Which is used to prove lock algorithms termination.
   % \end{itemize}
+
+  \vspace{-0.5cm}
   
   \begin{columns}
     \begin{column}{0.4\linewidth}
@@ -55,8 +79,16 @@
         \spinlockContraGraphContra
       \end{tikzpicture}
       }
-    \end{column}
+    \end{column}    
   \end{columns}
+
+  \vspace{0.5cm}
+  \begin{center}
+      % Notion of memory fairness allows to prove termination under weak memory
+      % By requiring memory fairness, we're now able to prove termination under weak memory
+      % By introducing memory fairness, we're able to prove termination under weak memory
+    Memory fairness requirement allows to prove termination under weak memory
+  \end{center}
 
 %   \begin{center}
 %   \scalebox{0.8}{\fairTrace}

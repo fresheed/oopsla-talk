@@ -1,9 +1,8 @@
-
-% \begin{frame}{Memory fairness corresponds to prefix-finiteness of a \only<1>{{\colorbox{white}{relation}}}\only<2->{{\colorbox{colorFR!50}{relation}}}}
-\begin{frame}{\onslide<2->{Declarative counterpart of}
-  \raisebox{-0.5cm}{{\color{black} \scalebox{0.8}{\propSubtrace}}}
-  \onslide<2->{is needed}}
-
+\begin{frame}{Declarative counterpart of
+    \raisebox{-0.5cm}{{\color{black} \scalebox{0.8}{\propSubtrace}}}
+    is needed}
+  
+  \setorder{fTitle,fProg,fRB,fPredicate,fApproved}
 
   \renewcommand{\hof}{2}
   \renewcommand{\vof}{1}
@@ -11,7 +10,7 @@
 
   \vspace{0.5cm}
 
-  \onslide<3->{
+  \onslide<\fProg->{
 
     \begin{columns}[T]
 
@@ -35,25 +34,25 @@
           \spinlockInfGraphRF
           \spinlockInfGraphMO
           % \onslide<4->{\spinlockInfGraphFRComp}
-          \onslide<4->{
+          \onslide<\fRB->{
             \spinlockInfGraphRB
             \node (R24) at (0 * \hof, -4 * \vof) {$\lFR \defeq \lRF^{-1};\lMO$};
           }        
         \end{tikzpicture}
-
-        \pause
 
       \end{column}
 
     \end{columns}
 
     \begin{center}
-    \onslide<5->{
-      $\TSOdeclfair \defeq acyclic(\lPO \cup \lRF \cup \lMO)\land \ldots \land {\color{\colorTitleApprox}\underline{prefix\text{-}finite(\lFR)}}$
+    \onslide<\fPredicate->{
+      $\TSOdeclfair \defeq acyclic(\lPO \cup \lRF \cup \lMO)\land \ldots \land {\color{\colorTitleApprox}\underline{prefix\text{-}finite(\lFR)}}$,
+
+      where $prefix\text{-}finite(R) \defeq \forall y.\ |\{x\ :\ R x y\}\Large{|}< \aleph_0$
     }
   \end{center}
 
-  \onslide<6->{
+  \onslide<\fApproved->{
   \tikz[overlay,remember picture]{
     \node (Approved) at ([xshift=-2cm,yshift=-2.0cm]current page.center) {\includegraphics[width=0.5\textwidth]{approved.png}};
   }
