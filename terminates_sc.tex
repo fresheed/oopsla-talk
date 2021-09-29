@@ -2,27 +2,6 @@
 \newcommand{\evalMRI}[1]{\FPeval{\MRI}{round((#1):0)}} % math result 1
 \newcommand{\evalMRII}[1]{\FPeval{\MRII}{round((#1):0)}} % math result 2
 
-\newcommand{\arrowTIMem}{colorPO}
-\newcommand{\arrowTIIMem}{colorPO}
-\newcommand{\arrowMemTI}{colorPO}
-\newcommand{\arrowMemTII}{colorPO}
-\newcommand{\unsA}{
-  \renewcommand{\arrowTIMem}{colorPO}
-  \renewcommand{\arrowTIIMem}{colorPO}
-  \renewcommand{\arrowMemTI}{colorPO}
-  \renewcommand{\arrowMemTII}{colorPO}
-}
-\newcommand{\selectArrowI}[1]{
-  \unsA
-  \renewcommand{#1}{\activeColor!80}
-}
-\newcommand{\selectArrowII}[2]{
-  \unsA
-  \renewcommand{#1}{\activeColor!80}
-  \renewcommand{#2}{\activeColor!80}
-}
-
-
 \begin{frame}{\onslide<6->{Spinlock terminates under interleaving semantics}}
   \setorder{
     fAbstract,fTerm,fHang,fAbstracts,

@@ -1,39 +1,3 @@
-\newcommand{\arrowTIBufI}{colorPO}
-\newcommand{\arrowTIIBufII}{colorPO}
-\newcommand{\arrowBufIMem}{colorPO}
-\newcommand{\arrowBufIIMem}{colorPO}
-\newcommand{\arrowMemTI}{colorPO}
-\newcommand{\arrowMemTII}{colorPO}
-\newcommand{\arrowBufITI}{colorPO}
-\newcommand{\arrowBufIITII}{colorPO}
-
-\providecommand{\unsA}{} % defined for sc, 'providecommand' for development
-\renewcommand{\unsA}{
-  \upd{\arrowTIBufI}{colorPO}
-  \upd{\arrowTIIBufII}{colorPO}
-  \upd{\arrowBufIMem}{colorPO}
-  \upd{\arrowBufIIMem}{colorPO}
-  \upd{\arrowMemTI}{colorPO}
-  \upd{\arrowMemTII}{colorPO}
-  \upd{\arrowBufITI}{colorPO}
-  \upd{\arrowBufIITII}{colorPO}
-}
-\newcommand{\selectArrowI}[1]{
-  \unsA
-  \upd{#1}{\activeColor!80}
-}
-\newcommand{\selectArrowII}[2]{
-  \unsA
-  \upd{#1}{\activeColor!80}
-  \upd{#2}{\activeColor!80}
-}
-\newcommand{\selectArrowIII}[3]{
-  \unsA
-  \upd{#1}{\activeColor!80}
-  \upd{#2}{\activeColor!80}
-  \upd{#3}{\activeColor!80}
-}
-
 \begin{frame}{There are many modern concurrency semantics}
   \vspace{2cm}
 
