@@ -12,21 +12,26 @@
 
   \begin{columns}
     
-    \begin{column}{0.45\linewidth}
+    \begin{column}{0.40\linewidth}
       \begin{center}
         \propSubtrace
       \end{center}    
     \end{column}
 
-    \begin{column}{0.05\linewidth}
-      \raisebox{-0.5cm}{\LARGE $\approx$}
+    \begin{column}{0.02\linewidth}
+      \raisebox{-0.6cm}{\LARGE $\approx$}
     \end{column}
     
-    \begin{column}{0.40\linewidth}
+    \begin{column}{0.5\linewidth}
       \begin{center}
-        \onslide<2->{$\fairDecl \defeq$ \\}
-        ${\color{\colorTitleApprox}\underline{prefix\text{-}finite(\lFR)}}$\onslide<2->{
-        $\land\ {\color{\colorTitleApprox}\underline{prefix\text{-}finite(\lMO)}}$}
+        % \onslide<2->{$\fairDecl \defeq$ \\}
+        % ${\color{\colorTitleApprox}\underline{prefix\text{-}finite(\lFR)}}$\onslide<2->{
+        % $\land\ {\color{\colorTitleApprox}\underline{prefix\text{-}finite(\lMO)}}$}
+        \raisebox{0.5cm}{
+        \scalebox{0.95}{
+          $\onslide<2->{\ \fairDecl \defeq} {\color{\colorTitleApprox}\underline{prefix\text{-}finite(\lFR)}} \onslide<2->{\land{\color{\colorTitleApprox}\underline{prefix\text{-}finite(\lMO)}}}$
+        }
+      }
       \end{center}
     \end{column}      
 
@@ -52,8 +57,13 @@
 %   }
 %   \end{center}
 
-  \begin{center}
+%   \begin{center}
 
+  \vspace{0.5cm}
+  
+
+  \begin{minipage}{0.05\linewidth} \hspace{0.5cm} \end{minipage}  
+  \begin{minipage}{0.8\linewidth}
     \begin{tabular}{r r c r}
       \onslide<3->{\thmLine{1}{\TSOopfair}{\TSOdecl} \\}
       \onslide<4->{
@@ -62,9 +72,11 @@
       \thmLine{4}{\SCOHopfair}{\SCOHdecl} \\
       }
     \end{tabular}
+  \end{minipage}
   
-\end{center}
-  
+  % \end{center}
+
+
 \onslide<5->{
     \tikz[overlay,remember picture]{
       \node (Coq) at ([xshift=5.8cm,yshift=-1cm]current page.center){\includegraphics[width=0.3\linewidth]{coq.png}};

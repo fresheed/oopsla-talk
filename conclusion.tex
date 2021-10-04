@@ -65,7 +65,15 @@
   
   \begin{columns}
     \begin{column}{0.4\linewidth}
-      \scalebox{0.9}{\fairTrace}
+      \begin{center}
+        \scalebox{0.9}{\fairTrace}
+
+        \vspace{0.8cm}
+    
+        \scalebox{0.9}{
+          $\ \fairDecl \defeq {\color{\colorTitleApprox}\underline{prefix\text{-}finite(\lFR)}} \land{\color{\colorTitleApprox}\underline{prefix\text{-}finite(\lMO)}}$
+        }
+      \end{center}
     \end{column}    
     \begin{column}{0.4\linewidth}
       \renewcommand{\hof}{2}
@@ -78,7 +86,8 @@
         \spinlockContraGraphRelationsII
         \spinlockContraGraphContra
       \end{tikzpicture}
-      }
+    }
+
     \end{column}    
   \end{columns}
 
@@ -87,7 +96,7 @@
       % Notion of memory fairness allows to prove termination under weak memory
       % By requiring memory fairness, we're now able to prove termination under weak memory
       % By introducing memory fairness, we're able to prove termination under weak memory
-    Memory fairness requirement allows to prove termination under weak memory
+    Memory fairness requirements allow to prove termination under weak memory
   \end{center}
 
 %   \begin{center}
