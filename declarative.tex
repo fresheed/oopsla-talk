@@ -40,18 +40,46 @@
       
 \end{frame}
 
+\newcommand{\inactiveOpacity}{0.3}
+\newcommand{\activeOpacity}{1.0}
+\newcommand{\sigUIop}{\inactiveOpacity}
+\newcommand{\sigWIop}{\activeOpacity}
+\newcommand{\sigRIIop}{\inactiveOpacity}
+\newcommand{\sigRIISop}{\inactiveOpacity}
+\newcommand{\sigRIITop}{\inactiveOpacity}
+\newcommand{\sigPOop}{\activeOpacity}
+\newcommand{\sigRFop}{\activeOpacity}
+\newcommand{\sigMOop}{\activeOpacity}
+
+\newcommand{\forceOpacity}[1]{
+  \upd{\sigUIop}{#1} \upd{\sigWIop}{#1}
+  \upd{\sigRIIop}{#1} \upd{\sigRIISop}{#1} \upd{\sigRIITop}{#1} 
+  \upd{\sigPOop}{#1} \upd{\sigRFop}{#1} \upd{\sigMOop}{#1}
+}
+\newcommand{\resetOpacity}{\forceOpacity{\inactiveOpacity}}
+\providecommand{\selectActive}{}
+\renewcommand{\selectActive}[1]{
+  \resetOpacity
+  \upd{#1}{\activeOpacity}
+}
+
+% \newcommand{\nodeOpacity}[1]{fill opacity=#1, opacity=#1} -- seems that macro expansions don't work that way
 
 \begin{frame}{Declarative memory models avoid explicit interleaving}
-
-  \only<2->{\selectI \upd{\progPosI}{I}}
-  \only<3->{\upd{\progPosI}{II}}
-  \only<4->{\upd{\progPosI}{IV}}
-  \only<5->{\selectII \upd{\progPosII}{I}}
-  \only<6->{\upd{\progPosII}{II}}
-  \only<7->{\upd{\progPosII}{I}}
-  \only<8->{\upd{\progPosII}{II}}
-  \only<9->{\upd{\progPosII}{I}}
-  \only<10->{\renewcommand{\tIIcolor}{\passiveColor} \upd{\progPosII}{II}}
+  \only<1->{\forceOpacity{\activeOpacity}}
+  \only<2->{\selectI \upd{\progPosI}{I} \resetOpacity}
+  \only<3->{\upd{\progPosI}{II} \selectActive{\sigUIop}}
+  \only<4->{\upd{\progPosI}{IV} \selectActive{\sigWIop}}
+  \only<5->{\selectII \upd{\progPosII}{I} \resetOpacity}
+  \only<6->{\upd{\progPosII}{II} \selectActive{\sigRIIop}}
+  \only<7->{\upd{\progPosII}{I} \resetOpacity}
+  \only<8->{\upd{\progPosII}{II} \selectActive{\sigRIISop}}
+  \only<9->{\upd{\progPosII}{I} \resetOpacity}
+  \only<10->{\upd{\tIIcolor}{\passiveColor} \upd{\progPosII}{II}  \selectActive{\sigRIITop}}
+  \only<11->{\selectActive{\sigPOop}}
+  \only<12->{\selectActive{\sigRFop}}
+  \only<13->{\selectActive{\sigMOop}}
+  \only<14->{\forceOpacity{\activeOpacity}}
 
 
   \begin{columns}
@@ -65,25 +93,33 @@
     \end{column}
 
     \begin{column}{0.5\linewidth}
-      \pause
       \renewcommand{\hof}{2}
       \renewcommand{\vof}{1}
       \begin{center}
         \begin{tikzpicture}[xscale=2, yscale=0.8]
           % \spinlockInfGraphEvents
           
-          \onslide<3->{\node (U1) at (0 * \hof, -0 * \vof) {$\evlab{\lU}{}{l}{0, 1}$};}
-          \onslide<4->{\node (W1) at (0 * \hof, -2 * \vof) {$\evlab{\lW}{}{l}{0}$};}
-          \onslide<6->{\node (R21) at (1 * \hof, -0 * \vof) {$\evlab{\lR}{}{l}{1}$};}
-          \onslide<8->{\node (R22) at (1 * \hof, -2 * \vof) {$\evlab{\lR}{}{l}{1}$};}
-          \onslide<10->{
-          \node (R23) at (1 * \hof, -4 * \vof) {$\evlab{\lR}{}{l}{1}$};
-          \node (R24) at (1 * \hof, -5 * \vof) {$\ldots$};          
-        }
-                 
-          \onslide<11->{\spinlockInfGraphPOText}
-          \onslide<12->{\pause \spinlockInfGraphRF}
-          \onslide<13->{\pause \spinlockInfGraphMO}
+          \node[fill opacity=\sigUIop] (U1) at (0 * \hof, -0 * \vof) {$\evlab{\lU}{}{l}{0, 1}$};
+          \node[fill opacity=\sigWIop] (W1) at (0 * \hof, -2 * \vof) {$\evlab{\lW}{}{l}{0}$};
+          \node[fill opacity=\sigRIIop] (R21) at (1 * \hof, -0 * \vof) {$\evlab{\lR}{}{l}{1}$};
+          \node[fill opacity=\sigRIISop] (R22) at (1 * \hof, -2 * \vof) {$\evlab{\lR}{}{l}{1}$};
+          
+          \node (R23)[fill opacity=\sigRIITop] at (1 * \hof, -4 * \vof) {$\evlab{\lR}{}{l}{1}$};
+          \node (R24)[fill opacity=\sigRIITop] at (1 * \hof, -5 * \vof) {$\ldots$};
+                                   
+          \dpoText{U1}{W1}[fill opacity=\sigPOop,opacity=\sigPOop][][right];
+          \dpoText{R21}{R22}[fill opacity=\sigPOop,opacity=\sigPOop][][right];
+          \dpoText{R22}{R23}[fill opacity=\sigPOop,opacity=\sigPOop][][right];
+                
+          \node[fill opacity=\sigRFop,opacity=\sigRFop] (W0) at (0.5 * \hof, 1 * \vof) {$\evlab{\lW}{}{l}{0}$};
+          \drf{W0}{U1}[fill opacity=\sigRFop,opacity=\sigRFop][xshift=-0.5cm,yshift=0.2cm];
+          \drf{U1}{R21}[fill opacity=\sigRFop,opacity=\sigRFop][yshift=0.2cm];
+          \drf{U1}{R22}[fill opacity=\sigRFop,opacity=\sigRFop][yshift=0.1cm];
+          \drf{U1}{R23}[fill opacity=\sigRFop,opacity=\sigRFop];
+                
+          \dmo{W0}{U1}[bend left=30,fill opacity=\sigMOop,opacity=\sigMOop][][right];
+          \dmo{U1}{W1}[bend right=30,fill opacity=\sigMOop,opacity=\sigMOop][][right];        
+        
         \end{tikzpicture}
         
       \end{center}

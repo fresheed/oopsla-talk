@@ -290,7 +290,7 @@
    time/.style={-to,dashed,color=colorPO,thick},
    frComp/.style={->,color=colorFR,line width=3,opacity=0.5},
    thicc/.style={->,color=gray,thick,line width=5,opacity=1},
-   prop/.style={-,color=gray,shorten >=0.0cm,shorten <=0.2cm},
+   prop/.style={-,dotted,thick,color=gray,shorten >=0.0cm,shorten <=0.2cm},
 }
 
 %% Orders
@@ -444,15 +444,15 @@
 \newcommand{\lFRI}{\lmakeI{\lFR}}
 
 \newcommand{\dpo}[2]{\draw[po] (#1) edge (#2);}
-\newcommand{\dpoText}[2]{\draw[po] (#1) edge[right] node {$\lPO$} (#2);}
+\newcommandx{\dpoText}[5][3={},4={},5={}]{\draw[po,#3] (#1) edge[#5] node[#4] {$\lPO$} (#2);}
 % \newcommand{\dfr}[3]{\draw[fr] (#1) edge[#3] node {$\lFR$} (#2);}
 \newcommandx{\dfr}[5][3={},4={},5={}]{\draw[fr,#3] (#1) edge[#5] node[#4] {$\lFR$} (#2);}
 % \newcommand{\drf}[3][]{\draw[rf, #1] (#2) edge node[right] {$\lRF$} (#3);}
-\newcommandx{\drf}[4][3={},4={}]{\draw[rf, #3] (#1) edge node[right,#4] {$\lRF$} (#2);}
+\newcommandx{\drf}[5][3={},4={},5={}]{\draw[rf, #3] (#1) edge[#5] node[right,#4] {$\lRF$} (#2);}
 
 % \newcommand{\dmo}[2]{\draw[mo] (#1) edge node {$\lMO$} (#2);}
 \newcommand{\dmoext}[3]{\draw[mo, #3] (#1) edge node {$\lMO$} (#2);}
-\newcommandx{\dmo}[4][1=, 2=right]{\draw[mo, #1] (#3) edge node[#2] {$\lMO$} (#4);}
+\newcommandx{\dmo}[5][3={},4={},5={}]{\draw[mo, #3] (#1) edge[#5] node[#4] {$\lMO$} (#2);}
 % \newcommandx{\d}[4][1=, 2=right]{\draw[mo, #1] (#3) edge node[#2] {$\lMO$} (#4);}
 
 \newcommand{\Event}{\mathsf{Event}}
