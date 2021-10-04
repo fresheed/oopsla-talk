@@ -33,7 +33,7 @@
           \spinlockInfGraphPO
           \spinlockInfGraphRF
           \spinlockInfGraphMO
-          % \onslide<4->{\spinlockInfGraphFRComp}
+
           \onslide<\fRB->{
             \spinlockInfGraphRB
             \node (R24) at (0 * \hof, -4 * \vof) {$\lFR \approx \lRF^{-1};\lMO$};
@@ -48,7 +48,7 @@
     \onslide<\fPredicate->{
       $\TSOdeclfair \defeq acyclic(\lPO \cup \lRF \cup \lMO)\land \ldots \land {\color{\colorTitleApprox}\underline{prefix\text{-}finite(\lFR)}}$,
 
-      where $prefix\text{-}finite(R) \defeq \forall y.\ |\{x\ :\ R x y\}\Large{|}< \aleph_0$
+      where $prefix\text{-}finite(R) \defeq \forall y.\ \{x\ |\ R x y\}\ is \ finite$
     }
   \end{center}
 
@@ -58,10 +58,6 @@
   }
   }
 
-    % \tikz[overlay,remember picture]{
-    %   % \draw[frComp,bend right=120] (7, -1) edge node[] { } (7, 5);
-    % \myrectMulti{Allowed}{(12, 5)}{And now it's forbidden}{4cm}{1cm}{white};
-    % }
   }
 \end{frame}
 
