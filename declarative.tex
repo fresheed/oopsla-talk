@@ -1,17 +1,43 @@
+\newcommand{\propNode}[3]{
+  \node (#1) at (#3 PropPos.center) {\large{\color{black!70} #2}};
+}
+
 \begin{frame}
   \begin{center}
     {\Large Memory fairness for \textit{operational} (interleaving-based) models:}
 
     \vspace{0.4cm}
-    \pause
-    \scalebox{0.8}{\fairTrace}
+    \onslide<2->{
+    \scalebox{0.9}{
+      % \fairTrace
+      \begin{traceenvNoThreads}{1.4}{0.9}
+        \fairTraceImpl
+      \end{traceenvNoThreads}
+    }
+    }
 
     \vspace{1cm}
     \pause
-    
-    {\Large Memory fairness for \textit{declarative} models: \color{red}{???}}
+
+    \onslide<5->{
+      {\Large Memory fairness for \textit{declarative} models: \color{red}{???}}
+    }
     
   \end{center}
+
+  % \newcommand{\propPos}{()}
+  \onslide<3>{
+    \tikz[overlay,remember picture]{
+      \node (PropPos) at ([xshift=0.6cm,yshift=1.4cm]current page.center) {\color{red} {}};
+      \propNode{SC}{$\mathbf{\top}$}{[xshift=-0.8cm,yshift=-2.0cm]};
+      \propNode{TSO}{\small{Buffers are flushed}}{[xshift=0.0cm,yshift=-2.8cm]};
+      \propNode{RA}{\ldots}{[xshift=0.9cm,yshift=-2.0cm]};
+      \draw[prop] (PropPos.south) -- (SC);
+      \draw[prop] (PropPos.south) -- (TSO);
+      \draw[prop] (PropPos.south) -- (RA);
+    }
+  }
+      
 \end{frame}
 
 

@@ -229,22 +229,19 @@
 }
 \newcommand{\tsoEquiv}{\mmEquiv{\TSOopfair}{\TSOdecl}}
 
+\newcommand{\fairTraceImpl}{
+  \stepcounter{evctr}
+  \node at (\curEv-0.5, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
+  \node at (\curEv-0.9, 0) {\ldots};
+  \node at (\curEv-0.3, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
+
+  \node at (\curEv-0.5, 1) {\color{blue} \underline{$\mathtt{prop}$} \stepcounter{evctr}};    
+  \node at (\curEv-0.4, 0) {$\ulab{}{l}{0}{1}$};
+}
+
 \newcommand{\fairTrace}{
-    \begin{traceenvNoThreads}{1.4}{0.9}
-    \stepcounter{evctr}
-    % \node at (\curEv-0.25, 1) {$\ulab{}{l}{0}{1}$ \stepcounter{evctr}};
-    % \node at (\curEv-0.7, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
-    % \node at (\curEv-0.4, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
-    % \node at (\curEv-0.7, 1) {$\wlab{}{l}{0}$ \stepcounter{evctr}};
-
-    % \node at (\curEv-0.7, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
-    \node at (\curEv-0.5, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
-    \node at (\curEv-0.9, 0) {\ldots};
-    \node at (\curEv-0.3, 0) {$\rlab{}{l}{1}$ \stepcounter{evctr}};
-
-    \node at (\curEv-0.5, 1) {\color{blue} \underline{$\mathtt{prop}$} \stepcounter{evctr}};    
-    \node at (\curEv-0.4, 0) {$\ulab{}{l}{0}{1}$};
-    % \node at (\curEv-0.7, 0) {$\wlab{}{l}{0}$};
+  \begin{traceenvNoThreads}{1.4}{0.9}
+    \fairTraceImpl
   \end{traceenvNoThreads}
 }
 
