@@ -199,7 +199,7 @@
       \dpo{R21}{R22}; 
 
       \drf{U1}{R21}[][yshift=0.2cm]; \drf{U1}{R22}[][xshift=0.3cm];
-      \dmo{W0}{U1}[bend left=30]; \dmo{U1}{W1}[bend right=30];
+      \dmo{W0}{U1}[bend left=30][][right]; \dmo{U1}{W1}[bend right=30][][right];
 
       \dfr{R21}{W1}[][yshift=0.3cm,xshift=0.1cm]; \dfr{R22}{W1}[][yshift=-0.2cm];
 }
@@ -227,8 +227,8 @@
   \node at (\curEv-0.4, 0) {$\ulab{}{l}{0}{1}$};
 }
 
-\newcommand{\fairTrace}{
-  \begin{traceenvNoThreads}{1.4}{0.9}
+\newcommandx{\fairTrace}[1][1=1.4]{
+  \begin{traceenvNoThreads}{#1}{0.9}
     \fairTraceImpl
   \end{traceenvNoThreads}
 }

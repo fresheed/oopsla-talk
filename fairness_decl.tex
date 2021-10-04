@@ -1,5 +1,5 @@
 \begin{frame}{Declarative counterpart of
-    \raisebox{-0.5cm}{{\color{black} \scalebox{0.85}{\propSubtrace}}}
+    \raisebox{-0.5cm}{{\color{black} \scalebox{0.85}{\fairTrace[1.5]}}}
     is needed}
   
   \setorder{fTitle,fProg,fRB,fPredicate,fApproved}
@@ -36,8 +36,8 @@
 
           \onslide<\fRB->{
             \spinlockInfGraphRB
-            \node (R24) at (0 * \hof, -4 * \vof) {$\lFR \approx \lRF^{-1};\lMO$};
-          }        
+            \node (R24) at (0 * \hof, -4 * \vof) {$\lFR \defeq \lRF^{-1};\!\lMO \ {\color{black!80} \setminus \mathtt{id}}$};
+          }
         \end{tikzpicture}
 
       \end{column}
