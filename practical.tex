@@ -19,11 +19,13 @@
     \pause 
     \begin{restatable}{lem}{termination}
       % An infinite sequence of read events contains a read from $\lMO$-maximal write, if there is such.
-      An infinite sequence of read events eventually reads from $\lMO$-newer writes.
+      % An infinite sequence of read events eventually reads from $\lMO$-newer writes.
+      % An infinite sequence of read events contains an event reading from the $\lMO$-latest write.
+      If a sequence of read events is infinite, some of them read from the $\lMO$-latest write.
     \end{restatable}
 
     \tikz[overlay,remember picture]{
-      \node (Coq) at (6, 1) {\includegraphics[width=0.2\textwidth]{coq.png}};
+      \node (Coq) at (6.5, 1) {\includegraphics[width=0.2\textwidth]{coq.png}};
     }
   \end{center}
 
