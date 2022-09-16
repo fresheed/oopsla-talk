@@ -1,4 +1,4 @@
-\begin{frame}{Further work}
+\begin{frame}{Supporting more memory access types, \sout{$acyclic(\lPO \cup \lRF)$}}
   % \begin{columns}
   %   \begin{column}{0.4\linewidth}
   %     \begin{center}
@@ -35,11 +35,16 @@
     \raisebox{0.5cm}{\includegraphics[width=0.3\linewidth]{power.png}} \hfill
   \end{center}
 
+  \begin{itemize}
+  \item Extended results to OCaml model (straightforward), RC11 (WiP)
+  \item Wondering what ``fairness'' means for even more relaxed models
+  \end{itemize}
+
   \vspace{0.5cm}
   \renewcommand{\ULthickness}{0.75pt}
-  \begin{center}
-    {\large More memory access types,\ \   \sout{$acyclic(\lPO \cup \lRF)$}}
-\end{center}
+%   \begin{center}
+%     {\large }}
+% \end{center}
 
   %   \begin{center}
   %   \begin{minipage}{0.5\linewidth}
@@ -49,6 +54,62 @@
   %   \end{itemize}
   %   \end{minipage}
   % \end{center}
+\end{frame}
+
+\begin{frame}{Now: employing \textbf{uniform operational} fairness in Iris}
+
+  \begin{itemize}
+  \item Program logics are unavoidable for verifying complicated algorithms
+  \item Message-based approach covers most of memory models:
+
+    SC, RA, RC11, OCaml, TSO (most probably), Promising (with some complications)
+    
+  \item ${\color{\colorTitleApprox}\underline{prefix\text{-}finite(\lFR)}}$ corresponds to old messages removal
+  \end{itemize}
+
+  \pause
+
+  \renewcommand{\hof}{2}
+  \renewcommand{\vof}{1}
+
+  \begin{tikzpicture}[xscale=2, yscale=0.8]
+    % \spinlockContraGraphEventsI
+    % \spinlockContraGraphRelationsI
+    % \spinlockContraGraphEventsII
+    % \spinlockContraGraphRelationsII
+    % % \spinlockContraGraphContra       
+
+  \node (W0) at (0.5 * \hof, 1 * \vof) {$\evlab{\lW}{}{l}{0}{\color{orange}@t_0}$};
+  \node (U1) at (0 * \hof, -0 * \vof) {$\evlab{\lU}{}{l}{0, 1}{\color{orange}@t_1}$};
+  \node (W1) at (0 * \hof, -2 * \vof) {$\evlab{\lW}{}{l}{0}{\color{orange}@t_2}$};
+
+  \node (R21) at (1 * \hof, -0 * \vof) {$\evlab{\lR}{}{l}{1}$};
+  \node (R22) at (1 * \hof, -2 * \vof) {$\evlab{\lR}{}{l}{1}$};
+  \node (R23) at (1 * \hof, -3 * \vof) {$\ldots$};
+
+  \node (R24) at (1 * \hof, -4 * \vof) {$\evlab{\lR}{}{l}{0}$};
+
+      \dpo{U1}{W1};
+      \dpo{R21}{R22}; 
+
+      \drf{U1}{R21}[][yshift=0.2cm]; \drf{U1}{R22}[][xshift=0.3cm];
+      \dmo{W0}{U1}[bend left=30][][right]; \dmo{U1}{W1}[bend right=30][][right];
+
+      \dfr{R21}{W1}[][yshift=0.3cm,xshift=0.1cm]; \dfr{R22}{W1}[][yshift=-0.2cm];
+
+      \drf{W1}{R24}[][xshift=0.1cm];
+
+      \node (mem1) at (1.8 * \hof, -0 * \vof) {\comment{$l: [t_0 \mapsto 0, t_1 \mapsto 1, t_2 \mapsto 0]$}};
+      \node (mem2) at (1.65 * \hof, -2 * \vof) {\comment{$l: [t_1 \mapsto 1, t_2 \mapsto 0]$}};
+      \node (mem3) at (1.5 * \hof, -4 * \vof) {\comment{$l: [t_2 \mapsto 0]$}};
+
+  % \node (coqPic) at (0.75 * \hof, -4 * \vof) {{\LARGE $\exists$}};
+
+  
+
+\end{tikzpicture}
+
+  
 \end{frame}
 
 \begin{frame}{Takeaway}
