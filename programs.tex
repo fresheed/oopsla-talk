@@ -11,6 +11,32 @@
   $\}$
 }
 
+\newcommand{\ticketlockLib}{
+  $\kw{void}\ lock(s, t)\ \{$ \\
+  \ptab $\incInst{v}{t}{1};$ \\
+  \ptab $\kw{repeat}\ \readInst{v'}{s};$ \\
+  \ptab $\kw{until}\ (v = v')$\\
+  $\}$
+
+  $\kw{void}\ unlock(s)\ \{$\\
+  \ptab$\writeInst{s}{[\ s\ ] + 1};$\\
+  $\}$
+}
+\newcommand{\ticketlockClientII}{
+  \begin{figure}[h]
+    \centering
+    \begin{tabular}{l | l}
+      \multicolumn{2}{c}{$\writeInst{s}{0}{}; \writeInst{t}{0}{}$} \\
+      \hline
+      $\kw{while}\ True\{$ & $\kw{while}\ True\{$ \\
+      \ptab $lock(l);$ & \ptab $lock(l);$ \\
+      \ptab$unlock(l);$ & \ptab $unlock(l);$ \\
+      $\}$ & $\}$
+    \end{tabular}
+  \end{figure}    
+}
+
+
 \newcommand{\spinlockClientII}{
   \begin{figure}[h]
     \centering

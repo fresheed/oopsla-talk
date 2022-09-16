@@ -444,15 +444,15 @@
 \newcommand{\lFRI}{\lmakeI{\lFR}}
 
 \newcommand{\dpo}[2]{\draw[po] (#1) edge (#2);}
-\newcommandx{\dpoText}[5][3={},4={},5={}]{\draw[po,#3] (#1) edge[#5] node[#4] {$\lPO$} (#2);}
+\newcommandx{\dpoText}[6][3={},4={},5={},6=$\lPO$]{\draw[po,#3] (#1) edge[#5] node[#4] {#6} (#2);}
 % \newcommand{\dfr}[3]{\draw[fr] (#1) edge[#3] node {$\lFR$} (#2);}
 \newcommandx{\dfr}[5][3={},4={},5={}]{\draw[fr,#3] (#1) edge[#5] node[#4] {$\lFR$} (#2);}
 % \newcommand{\drf}[3][]{\draw[rf, #1] (#2) edge node[right] {$\lRF$} (#3);}
-\newcommandx{\drf}[5][3={},4={},5={}]{\draw[rf, #3] (#1) edge[#5] node[right,#4] {$\lRF$} (#2);}
+\newcommandx{\drf}[6][3={},4={},5={},6=$\lRF$]{\draw[rf, #3] (#1) edge[#5] node[right,#4] {#6} (#2);}
 
 % \newcommand{\dmo}[2]{\draw[mo] (#1) edge node {$\lMO$} (#2);}
 \newcommand{\dmoext}[3]{\draw[mo, #3] (#1) edge node {$\lMO$} (#2);}
-\newcommandx{\dmo}[5][3={},4={},5={}]{\draw[mo, #3] (#1) edge[#5] node[#4] {$\lMO$} (#2);}
+\newcommandx{\dmo}[6][3={},4={},5={},6=$\lMO$]{\draw[mo, #3] (#1) edge[#5] node[#4] {#6} (#2);}
 % \newcommandx{\d}[4][1=, 2=right]{\draw[mo, #1] (#3) edge node[#2] {$\lMO$} (#4);}
 
 \newcommand{\Event}{\mathsf{Event}}
@@ -632,7 +632,8 @@
 \newcommand{\OTracesfin}[1]{\mathsf{OTr^{fin}}({#1})}
 
 \newcommand{\en}{\nu}
-\renewcommand{\G}{\mathcal{G}}
+% \renewcommand{\G}{\mathcal{G}}
+\newcommand{\G}{\mathcal{G}}
 \newcommand{\fair}{\texttt{fair}}
 
 % Timestamp machine definitions

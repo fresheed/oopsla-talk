@@ -29,11 +29,11 @@
   \onslide<3>{
     \tikz[overlay,remember picture]{
       \node (PropPos) at ([xshift=0.6cm,yshift=1.4cm]current page.center) {\color{red} {}};
-      \propNode{SC}{$\mathbf{\top}$}{[xshift=-0.8cm,yshift=-2.0cm]};
-      \propNode{TSO}{\small{Buffers are flushed}}{[xshift=0.0cm,yshift=-2.8cm]};
-      \propNode{RA}{\ldots}{[xshift=0.9cm,yshift=-2.0cm]};
-      \draw[prop] (PropPos.south) -- (SC);
-      \draw[prop] (PropPos.south) -- (TSO);
+      \propNode{SC}{SC:\ $\mathbf{\top}$}{[xshift=-1.5cm,yshift=-2.0cm]};
+      \propNode{TSO}{TSO:\ \small{Buffers are flushed}}{[xshift=2.8cm,yshift=-2.0cm]};
+      \propNode{RA}{RA, RC11, $\ldots$: \ messages are made inaccessible}{[xshift=0.0cm,yshift=-3cm]};
+      \draw[prop] (PropPos.south) -- (SC.east);
+      \draw[prop] (PropPos.south) -- (TSO.west);
       \draw[prop] (PropPos.south) -- (RA);
     }
   }
@@ -118,7 +118,14 @@
           \drf{U1}{R23}[fill opacity=\sigRFop,opacity=\sigRFop];
                 
           \dmo{W0}{U1}[bend left=30,fill opacity=\sigMOop,opacity=\sigMOop][][right];
-          \dmo{U1}{W1}[bend right=30,fill opacity=\sigMOop,opacity=\sigMOop][][right];        
+          \dmo{U1}{W1}[bend right=30,fill opacity=\sigMOop,opacity=\sigMOop][][right];
+          
+          \node (ex1) at (0 * \hof, -6 * \vof) {};
+          \node (ex2) at (1 * \hof, -6 * \vof) {};
+
+          \onslide<11>{\dpoText{ex1}{ex2}[][xshift=-1.5cm, yshift=-0.3cm][right][program order];}
+          \onslide<12>{\drf{ex1}{ex2}[][xshift=-1.5cm, yshift=-0.3cm][right][reads from];}
+          \onslide<13>{\dmo{ex1}{ex2}[][xshift=-1.5cm, yshift=-0.3cm][right][modification order];}
         
         \end{tikzpicture}
         
