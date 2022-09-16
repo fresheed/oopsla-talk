@@ -65,7 +65,7 @@
 
 % \newcommand{\nodeOpacity}[1]{fill opacity=#1, opacity=#1} -- seems that macro expansions don't work that way
 
-\begin{frame}{Declarative memory models avoid explicit interleaving}
+\begin{frame}{Declarative models define allowed executions with graph predicates}
   \only<1->{\forceOpacity{\activeOpacity}}
   \only<2->{\selectI \upd{\progPosI}{I} \resetOpacity}
   \only<3->{\upd{\progPosI}{II} \selectActive{\sigUIop}}
@@ -98,6 +98,8 @@
       \begin{center}
         \begin{tikzpicture}[xscale=2, yscale=0.8]
           % \spinlockInfGraphEvents
+
+          \onslide<-14,16->{
           
           \node[fill opacity=\sigUIop] (U1) at (0 * \hof, -0 * \vof) {$\evlab{\lU}{}{l}{0, 1}$};
           \node[fill opacity=\sigWIop] (W1) at (0 * \hof, -2 * \vof) {$\evlab{\lW}{}{l}{0}$};
@@ -126,6 +128,23 @@
           \onslide<11>{\dpoText{ex1}{ex2}[][xshift=-1.5cm, yshift=-0.3cm][right][program order];}
           \onslide<12>{\drf{ex1}{ex2}[][xshift=-1.5cm, yshift=-0.3cm][right][reads from];}
           \onslide<13>{\dmo{ex1}{ex2}[][xshift=-1.5cm, yshift=-0.3cm][right][modification order];}
+
+        }
+
+        \onslide<15>{
+          \node[] (U1) at (0 * \hof, 0 * \vof) {$\evlab{\lU}{}{l}{0, 1}$};
+          \node[] (W1) at (0 * \hof, -2 * \vof) {$\evlab{\lW}{}{l}{0}$};
+          \node[] (U2) at (1 * \hof, 0 * \vof) {$\evlab{\lU}{}{l}{0, 1}$};
+          \node[] (W2) at (1 * \hof, -2 * \vof) {$\evlab{\lW}{}{l}{0}$};
+          \dpoText{U1}{W1}[][][right];
+          \dpoText{U2}{W2}[][][right];
+          \drf{W1}{U2}[][][left][];
+          \drf{W2}{U1}[][][right];
+        }
+
+        \onslide<15>{\node (ex1) at (0.5 * \hof, -5 * \vof){\Large \textcolor{red}{\ding{55}}};}
+        \onslide<16->{\node (ex1) at (0.5 * \hof, -5 * \vof){\Large \textcolor{green}{\ding{51}}};}
+        \onslide<17->{\node (ex2) at (0.65 * \hof, -5 * \vof){\includegraphics[width=0.1\textwidth]{emoji.png}};}
         
         \end{tikzpicture}
         
@@ -137,9 +156,27 @@
 
   \begin{center}
     \onslide<14->{$\TSOdecl \defeq acyclic(\lPO \cup \lRF \cup \lMO) \land \ldots$}
+    
   \end{center}
+
+
+  % \onslide<14->{
+  %   \renewcommand{\hof}{2}
+  %   \renewcommand{\vof}{1}
+  %   % \begin{tikzpicture}[overlay,remember picture, xscale=2, yscale=0.8]
+  %   \tikz[overlay, remember picture, xscale=2, yscale=0.8,background rectangle/.style={fill=white}]{  
+  %     \node[] (U1) at (0 * \hof, 3 * \vof) {$\evlab{\lU}{}{l}{0, 1}$};
+  %     \node[] (W1) at (0 * \hof, 1 * \vof) {$\evlab{\lW}{}{l}{0}$};
+  %     \node[] (U2) at (1 * \hof, 3 * \vof) {$\evlab{\lU}{}{l}{0, 1}$};
+  %     \node[] (W2) at (1 * \hof, 1 * \vof) {$\evlab{\lW}{}{l}{0}$};
+  %     \dpoText{U1}{W1}[][xshift=-1.5cm, yshift=-0.3cm][right];
+  %     \dpoText{U2}{W2}[][xshift=-1.5cm, yshift=-0.3cm][right];
+
+  %   }
+  %   % \end{tikzpicture}
+  % }
  
-  \onslide<15->{
+  \onslide<18->{
   \tikz[overlay,remember picture]{
     \node (Incomplete) at ([xshift=-1.25cm,yshift=-2.0cm]current page.center) {\includegraphics[width=0.5\textwidth]{incomplete.png}};
   }
