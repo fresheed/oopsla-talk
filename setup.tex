@@ -17,8 +17,9 @@
     \usebeamercolor[fg]{footline}%
     \hspace{1em}%
     \ifnum \theframenumber=1
-        % This is the title frame, do nothing
-
+      % This is the title frame, do nothing
+      \date{\today}
+      {\small \insertdate}
     \else
         % These would be all the following frames
         % <<<Your template code goes here>>>
@@ -42,8 +43,8 @@
 %% Теперь у нас будут переносы слов
 \usepackage{csquotes}
 \usepackage{polyglossia}
-\setdefaultlanguage{russian}
-\setotherlanguage{english}
+\setdefaultlanguage{english}
+% \setotherlanguage{english}
 
 \usepackage[normalem]{ulem}
 
@@ -57,28 +58,33 @@
 
 \usetheme{default}
 \author[ok.john.rus@gmail.com]{Ori Lahav, \textbf{Egor Namakonov}, Jonas Oberhauser, Anton Podkopaev, Viktor Vafeiadis}
-\title[-----]{Making Weak Memory Models Fair}
+\title[-----]{Liveness properties under weak memory}
+\subtitle[-----]{based on ``Making Weak Memory Models Fair''@OOPSLA'21}
 \institute{
   % \vspace{0.5cm}
   
 \raisebox{-1.5cm}{  \includegraphics[height=1.0cm]{logos/TelAvivUni_logo}
   \hspace{0.5cm}
   \hfill
-  \includegraphics[height=0.9cm]{logos/spbu_logo}
-  \hspace{0.5cm}
-  \hfill
-  \includegraphics[height=1.3cm]{logos/jbr_logo}
+  % \includegraphics[height=0.9cm]{logos/spbu_logo}
+  \includegraphics[height=0.9cm]{logos/au}
   \hspace{0.5cm}
   \hfill
   \includegraphics[height=0.9cm]{logos/huawei_logo}
   \hspace{0.5cm}
+  \includegraphics[height=1.3cm]{logos/jbr_logo}
+  \hspace{0.5cm}
   \hfill
-  \includegraphics[height=1.4cm]{logos/hse_logo}
+  % \hfill
+  % \includegraphics[height=1.4cm]{logos/hse_logo}
+
+  % \vspace{0.5cm}
+  \includegraphics[height=0.6cm]{logos/mpisws_logo}
+  }
 }
 
-  \vspace{0.5cm}  
-  \includegraphics[height=0.6cm]{logos/mpisws_logo}
-}
+% \date{\today}
+
 % \AtBeginSection[]
 % {
 %   \begin{frame}<beamer>
